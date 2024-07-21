@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:app/ViewScreen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -23,9 +24,11 @@ void main() {
             seedColor: const Color.fromARGB(255, 255, 210, 210)),
         useMaterial3: true,
       ),
-      home: const LoginScreen(),
+      home: const Home(),
       routes: {
         '/home/': (context) => const Home(),
+        '/view/' : (context) => const ViewScreen(),
+        'login' : (context) => const LoginScreen(),
       },
     ),
   );
@@ -184,7 +187,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                               email: email, password: password);
                                       Navigator.of(context)
                                           .pushNamedAndRemoveUntil(
-                                        '/home/',
+                                        '/view/',
                                         (route) => false,
                                       );
                                     } on FirebaseAuthException catch (e) {
