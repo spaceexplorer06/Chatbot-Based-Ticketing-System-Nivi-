@@ -235,6 +235,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       ),
                                       onTap: () {
                                         showGeneralDialog(
+                                          
                                           barrierDismissible: true,
                                           barrierLabel: "Sign up",
                                           context: context,
@@ -353,28 +354,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                                                       _password,
                                                                   decoration:
                                                                       InputDecoration(
-                                                                    suffixIcon:
-                                                                        GestureDetector(
-                                                                      onTap: () =>
-                                                                          setState(
-                                                                              () {
-                                                                        obstext =
-                                                                            !obstext;
-                                                                      }),
-                                                                      child:
-                                                                          Icon(
-                                                                        _obscuretext
-                                                                            ? Icons.visibility
-                                                                            : Icons.visibility_off,
-                                                                        color: const Color
-                                                                            .fromARGB(
-                                                                            255,
-                                                                            0,
-                                                                            31,
-                                                                            8),
-                                                                      ),
-                                                                    ),
                                                                     prefixIcon:
+                                                                        
+                                                                    
                                                                         const Icon(
                                                                       Icons
                                                                           .lock,
