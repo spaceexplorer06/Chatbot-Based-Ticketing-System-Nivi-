@@ -1,17 +1,9 @@
-import 'dart:ui';
 import 'package:app/ViewScreen.dart';
 import 'package:app/main.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:rive/rive.dart';
 import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:app/Home.dart';
-import 'dart:developer' as devtools show log;
 
 class Home extends StatefulWidget {
   const Home({super.key});
