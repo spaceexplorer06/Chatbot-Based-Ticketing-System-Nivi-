@@ -27,8 +27,8 @@ void main() {
       home: const Home(),
       routes: {
         '/home/': (context) => const Home(),
-        '/view/' : (context) => const ViewScreen(),
-        '/login/' : (context) => const LoginScreen(),
+        '/view/': (context) => const ViewScreen(),
+        '/login/': (context) => const LoginScreen(),
       },
     ),
   );
@@ -94,6 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: TextField(
+                                enableSuggestions: true,
                                 controller: _email,
                                 keyboardType: TextInputType.emailAddress,
                                 decoration: InputDecoration(
@@ -237,282 +238,269 @@ class _LoginScreenState extends State<LoginScreen> {
                                       ),
                                       onTap: () {
                                         showGeneralDialog(
-                                          
-                                          barrierDismissible: true,
-                                          barrierLabel: "Sign up",
-                                          context: context,
-                                          pageBuilder: (context, _, __) =>
-                                              Center(
-                                            child: Padding(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 12,
-                                                      vertical: 20),
-                                              child: Container(
-                                                height: 480,
-                                                decoration: const BoxDecoration(
-                                                    color: Color.fromARGB(
-                                                        255, 241, 255, 236),
-                                                    borderRadius:
-                                                        BorderRadius.all(
-                                                            Radius.circular(
-                                                                30))),
-                                                child: Scaffold(
-                                                  resizeToAvoidBottomInset:
-                                                      false,
-                                                  backgroundColor:
-                                                      Colors.transparent,
-                                                  body: 
-                                                          Column(
-                                                            children: [
-                                                              const Padding(
-                                                                padding: EdgeInsets
-                                                                    .symmetric(
-                                                                        vertical:
-                                                                            20),
-                                                                child: Text(
-                                                                  "Sign Up",
-                                                                  style: TextStyle(
-                                                                      fontSize:
-                                                                          25,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold),
+                                            barrierDismissible: true,
+                                            barrierLabel: "Sign up",
+                                            context: context,
+                                            pageBuilder:
+                                                (context, _, __) => Center(
+                                                      child: Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .symmetric(
+                                                                horizontal: 12,
+                                                                vertical: 20),
+                                                        child: Container(
+                                                          height: 480,
+                                                          decoration: const BoxDecoration(
+                                                              color: Color
+                                                                  .fromARGB(
+                                                                      255,
+                                                                      241,
+                                                                      255,
+                                                                      236),
+                                                              borderRadius: BorderRadius
+                                                                  .all(Radius
+                                                                      .circular(
+                                                                          30))),
+                                                          child: Scaffold(
+                                                            resizeToAvoidBottomInset:
+                                                                false,
+                                                            backgroundColor:
+                                                                Colors
+                                                                    .transparent,
+                                                            body: Column(
+                                                              children: [
+                                                                const Padding(
+                                                                  padding: EdgeInsets
+                                                                      .symmetric(
+                                                                          vertical:
+                                                                              20),
+                                                                  child: Text(
+                                                                    "Sign Up",
+                                                                    style: TextStyle(
+                                                                        fontSize:
+                                                                            25,
+                                                                        fontWeight:
+                                                                            FontWeight.bold),
+                                                                  ),
                                                                 ),
-                                                              ),
-                                                              Padding(
-                                                                padding: const EdgeInsets
-                                                                    .symmetric(
-                                                                    horizontal:
-                                                                        12),
-                                                                child:
-                                                                    TextField(
-                                                                  controller:
-                                                                      _email,
-                                                                  keyboardType:
-                                                                      TextInputType
-                                                                          .emailAddress,
-                                                                  decoration:
-                                                                      InputDecoration(
-                                                                    prefixIcon:
-                                                                        const Icon(
-                                                                      Icons
-                                                                          .email,
-                                                                      color: Color
-                                                                          .fromARGB(
-                                                                              255,
-                                                                              0,
-                                                                              31,
-                                                                              8),
-                                                                    ),
-                                                                    hintText:
-                                                                        "E M A I L",
-                                                                    hintStyle: const TextStyle(
+                                                                Padding(
+                                                                  padding: const EdgeInsets
+                                                                      .symmetric(
+                                                                      horizontal:
+                                                                          12),
+                                                                  child:
+                                                                      TextField(
+                                                                    enableSuggestions:
+                                                                        false,
+                                                                    controller:
+                                                                        _email,
+                                                                    keyboardType:
+                                                                        TextInputType
+                                                                            .emailAddress,
+                                                                    decoration:
+                                                                        InputDecoration(
+                                                                      prefixIcon:
+                                                                          const Icon(
+                                                                        Icons
+                                                                            .email,
                                                                         color: Color.fromARGB(
                                                                             255,
                                                                             0,
                                                                             31,
-                                                                            8)),
-                                                                    border:
-                                                                        OutlineInputBorder(
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              20),
-                                                                      borderSide: const BorderSide(
-                                                                          color: Colors
-                                                                              .brown,
-                                                                          width:
-                                                                              5),
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                              Padding(
-                                                                padding: const EdgeInsets
-                                                                    .symmetric(
-                                                                    horizontal:
-                                                                        12,
-                                                                    vertical:
-                                                                        20),
-                                                                child:
-                                                                    TextField(
-                                                                  autocorrect:
-                                                                      false,
-                                                                  enableSuggestions:
-                                                                      false,
-                                                                  controller:
-                                                                      _password,
-                                                                  decoration:
-                                                                      InputDecoration(
-                                                                    prefixIcon:
-                                                                        
-                                                                    
-                                                                        const Icon(
-                                                                      Icons
-                                                                          .lock,
-                                                                      color: Color
-                                                                          .fromARGB(
+                                                                            8),
+                                                                      ),
+                                                                      hintText:
+                                                                          "E M A I L",
+                                                                      hintStyle: const TextStyle(
+                                                                          color: Color.fromARGB(
                                                                               255,
                                                                               0,
                                                                               31,
-                                                                              8),
-                                                                    ),
-                                                                    hintText:
-                                                                        "P A S S W O R D",
-                                                                    hintStyle: const TextStyle(
-                                                                        color: Color.fromARGB(
-                                                                            255,
-                                                                            0,
-                                                                            31,
-                                                                            8)),
-                                                                    border:
-                                                                        OutlineInputBorder(
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              20),
-                                                                      borderSide: const BorderSide(
-                                                                          color: Colors
-                                                                              .brown,
-                                                                          width:
-                                                                              5),
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                              Padding(
-                                                                padding:
-                                                                    const EdgeInsets
-                                                                        .all(
-                                                                        8.0),
-                                                                child:
-                                                                    ElevatedButton(
-                                                                        style: ButtonStyle(
-                                                                            minimumSize: WidgetStateProperty.all(const Size(10,
-                                                                                60)),
-                                                                            backgroundColor: const WidgetStatePropertyAll(Color.fromARGB(
-                                                                                255,
-                                                                                0,
-                                                                                31,
-                                                                                8)),
-                                                                            elevation: const WidgetStatePropertyAll(
-                                                                                10)),
-                                                                        onPressed:
-                                                                            () async {
-                                                                          final email =
-                                                                              _email.text;
-                                                                          final password =
-                                                                              _password.text;
-                                                                          try {
-                                                                            final userCredential =
-                                                                                await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
-                                                                            devtools.log(userCredential.toString());
-                                                                            FirebaseFirestore.instance.collection("Users").doc(userCredential.user!.uid).set({
-                                                                              'uid': userCredential.user!.uid,
-                                                                              'email': email, // Initially Empty Bio
-                                                                            });
-                                                                          } on FirebaseAuthException catch (e) {
-                                                                            if (e.code ==
-                                                                                'weak-password') {
-                                                                              devtools.log("Weak Password");
-                                                                            } else if (e.code ==
-                                                                                'email-already-in-use') {
-                                                                              devtools.log("Email is already in use");
-                                                                            } else if (e.code ==
-                                                                                'invalid-email') {
-                                                                              devtools.log("Invalid email");
-                                                                            }
-                                                                          }
-                                                                          const SnackBar(
-                                                                              content: Text('Loading...'));
-                                                                        },
-                                                                        child:
-                                                                            const Padding(
-                                                                          padding:
-                                                                              EdgeInsets.symmetric(
-                                                                            horizontal:
-                                                                                95,
-                                                                          ),
-                                                                          child:
-                                                                              Text(
-                                                                            "Sign Up",
-                                                                            style:
-                                                                                TextStyle(
-                                                                              color: Colors.white,
-                                                                              fontSize: 20,
-                                                                            ),
-                                                                          ),
-                                                                        )),
-                                                              ),
-                                                               const Padding(
-                                                                padding: EdgeInsets
-                                                                    .symmetric(
-                                                                        vertical:
-                                                                            20),
-                                                                child: Row(
-                                                                  children: [
-                                                                    Expanded(
-                                                                      child:
-                                                                          Divider(
-                                                                        thickness:
-                                                                            0.5,
-                                                                        color: Color.fromARGB(
-                                                                            255,
-                                                                            46,
-                                                                            27,
-                                                                            20),
+                                                                              8)),
+                                                                      border:
+                                                                          OutlineInputBorder(
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(20),
+                                                                        borderSide: const BorderSide(
+                                                                            color:
+                                                                                Colors.brown,
+                                                                            width: 5),
                                                                       ),
                                                                     ),
-                                                                    Text(
-                                                                        "Or Sign Up with Email or Google"),
-                                                                    Expanded(
-                                                                      child: Divider(
+                                                                  ),
+                                                                ),
+                                                                Padding(
+                                                                  padding: const EdgeInsets
+                                                                      .symmetric(
+                                                                      horizontal:
+                                                                          12,
+                                                                      vertical:
+                                                                          20),
+                                                                  child:
+                                                                      TextField(
+                                                                    autocorrect:
+                                                                        false,
+                                                                    enableSuggestions:
+                                                                        false,
+                                                                    controller:
+                                                                        _password,
+                                                                    decoration:
+                                                                        InputDecoration(
+                                                                      prefixIcon:
+                                                                          const Icon(
+                                                                        Icons
+                                                                            .lock,
+                                                                        color: Color.fromARGB(
+                                                                            255,
+                                                                            0,
+                                                                            31,
+                                                                            8),
+                                                                      ),
+                                                                      hintText:
+                                                                          "P A S S W O R D",
+                                                                      hintStyle: const TextStyle(
+                                                                          color: Color.fromARGB(
+                                                                              255,
+                                                                              0,
+                                                                              31,
+                                                                              8)),
+                                                                      border:
+                                                                          OutlineInputBorder(
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(20),
+                                                                        borderSide: const BorderSide(
+                                                                            color:
+                                                                                Colors.brown,
+                                                                            width: 5),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                Padding(
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                          .all(
+                                                                          8.0),
+                                                                  child:
+                                                                      ElevatedButton(
+                                                                          style: ButtonStyle(
+                                                                              minimumSize: WidgetStateProperty.all(const Size(10,
+                                                                                  60)),
+                                                                              backgroundColor: const WidgetStatePropertyAll(Color.fromARGB(255, 0, 31,
+                                                                                  8)),
+                                                                              elevation: const WidgetStatePropertyAll(
+                                                                                  10)),
+                                                                          onPressed:
+                                                                              () async {
+                                                                            final email =
+                                                                                _email.text;
+                                                                            final password =
+                                                                                _password.text;
+                                                                            try {
+                                                                              final userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
+                                                                              devtools.log(userCredential.toString());
+                                                                              FirebaseFirestore.instance.collection("Users").doc(userCredential.user!.uid).set({
+                                                                                'uid': userCredential.user!.uid,
+                                                                                'email': email, // Initially Empty Bio
+                                                                              });
+                                                                            } on FirebaseAuthException catch (e) {
+                                                                              if (e.code == 'weak-password') {
+                                                                                devtools.log("Weak Password");
+                                                                              } else if (e.code == 'email-already-in-use') {
+                                                                                devtools.log("Email is already in use");
+                                                                              } else if (e.code == 'invalid-email') {
+                                                                                devtools.log("Invalid email");
+                                                                              }
+                                                                            }
+                                                                            const SnackBar(content: Text('Loading...'));
+                                                                          },
+                                                                          child:
+                                                                              const Padding(
+                                                                            padding:
+                                                                                EdgeInsets.symmetric(
+                                                                              horizontal: 95,
+                                                                            ),
+                                                                            child:
+                                                                                Text(
+                                                                              "Sign Up",
+                                                                              style: TextStyle(
+                                                                                color: Colors.white,
+                                                                                fontSize: 20,
+                                                                              ),
+                                                                            ),
+                                                                          )),
+                                                                ),
+                                                                const Padding(
+                                                                  padding: EdgeInsets
+                                                                      .symmetric(
+                                                                          vertical:
+                                                                              20),
+                                                                  child: Row(
+                                                                    children: [
+                                                                      Expanded(
+                                                                        child:
+                                                                            Divider(
                                                                           thickness:
                                                                               0.5,
                                                                           color: Color.fromARGB(
                                                                               255,
                                                                               46,
                                                                               27,
-                                                                              20)),
-                                                                    ),
-                                                                  ],
+                                                                              20),
+                                                                        ),
+                                                                      ),
+                                                                      Text(
+                                                                          "Or Sign Up with Email or Google"),
+                                                                      Expanded(
+                                                                        child: Divider(
+                                                                            thickness:
+                                                                                0.5,
+                                                                            color: Color.fromARGB(
+                                                                                255,
+                                                                                46,
+                                                                                27,
+                                                                                20)),
+                                                                      ),
+                                                                    ],
+                                                                  ),
                                                                 ),
-                                                              ),
-                                                               const Padding(
-                                                                padding: EdgeInsets
-                                                                    .symmetric(
-                                                                        vertical:
-                                                                            5,
-                                                                        horizontal:
-                                                                            80),
-                                                                child: Row(
-                                                                  children: [
-                                                                    Icon(
-                                                                      Icons
-                                                                          .email,
-                                                                      size: 50,
-                                                                    ),
-                                                                    Icon(
-                                                                      Icons
-                                                                          .g_mobiledata,
-                                                                      size: 70,
-                                                                    ),
-                                                                    Icon(
-                                                                      Icons
-                                                                          .facebook,
-                                                                      size: 50,
-                                                                    )
-                                                                  ],
-                                                                ),
-                                                              )
-                                                            ],
+                                                                const Padding(
+                                                                  padding: EdgeInsets
+                                                                      .symmetric(
+                                                                          vertical:
+                                                                              5,
+                                                                          horizontal:
+                                                                              80),
+                                                                  child: Row(
+                                                                    children: [
+                                                                      Icon(
+                                                                        Icons
+                                                                            .email,
+                                                                        size:
+                                                                            50,
+                                                                      ),
+                                                                      Icon(
+                                                                        Icons
+                                                                            .g_mobiledata,
+                                                                        size:
+                                                                            70,
+                                                                      ),
+                                                                      Icon(
+                                                                        Icons
+                                                                            .facebook,
+                                                                        size:
+                                                                            50,
+                                                                      )
+                                                                    ],
+                                                                  ),
+                                                                )
+                                                              ],
+                                                            ),
                                                           ),
-                                                       
-                                                  ),
-                                                ),
-                                              ),
-                                            )
-                                          
-                                        );
+                                                        ),
+                                                      ),
+                                                    ));
                                       },
                                     )
                                   ],
