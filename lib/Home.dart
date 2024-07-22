@@ -16,8 +16,7 @@ Future<bool> showlogoutDialog(BuildContext context) {
       context: context,
       builder: (context) {
         return AlertDialog(
-            backgroundColor: const Color.fromARGB(255, 255, 237, 
-            189),
+            backgroundColor: Color.fromARGB(255, 210, 255, 189),
             title: const Text('Log Out!'),
             content: const Text('Are you sure you want to log out?'),
             actions: [

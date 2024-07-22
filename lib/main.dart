@@ -28,7 +28,7 @@ void main() {
       routes: {
         '/home/': (context) => const Home(),
         '/view/' : (context) => const ViewScreen(),
-        'login' : (context) => const LoginScreen(),
+        '/login/' : (context) => const LoginScreen(),
       },
     ),
   );
