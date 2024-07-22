@@ -94,6 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: TextField(
+                                controller: _email,
                                 keyboardType: TextInputType.emailAddress,
                                 decoration: InputDecoration(
                                   prefixIcon: const Icon(
@@ -116,6 +117,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: TextField(
+                                controller: _password,
                                 autocorrect: false,
                                 enableSuggestions: false,
                                 obscureText: _obscuretext,
