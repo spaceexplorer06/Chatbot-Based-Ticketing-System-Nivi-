@@ -260,20 +260,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                                       false,
                                                   backgroundColor:
                                                       Colors.transparent,
-                                                  body: FutureBuilder(
-                                                    future:
-                                                        Firebase.initializeApp(
-                                                      options:
-                                                          DefaultFirebaseOptions
-                                                              .currentPlatform,
-                                                    ),
-                                                    builder:
-                                                        (context, snapshot) {
-                                                      switch (snapshot
-                                                          .connectionState) {
-                                                        case ConnectionState
-                                                              .done:
-                                                          return Column(
+                                                  body: 
+                                                          Column(
                                                             children: [
                                                               const Padding(
                                                                 padding: EdgeInsets
@@ -453,7 +441,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                                                           ),
                                                                         )),
                                                               ),
-                                                              const Padding(
+                                                               const Padding(
                                                                 padding: EdgeInsets
                                                                     .symmetric(
                                                                         vertical:
@@ -487,7 +475,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                                                   ],
                                                                 ),
                                                               ),
-                                                              const Padding(
+                                                               const Padding(
                                                                 padding: EdgeInsets
                                                                     .symmetric(
                                                                         vertical:
@@ -515,17 +503,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                                                 ),
                                                               )
                                                             ],
-                                                          );
-                                                        default:
-                                                          return const Text(
-                                                              "Loading...");
-                                                      }
-                                                    },
+                                                          ),
+                                                       
                                                   ),
                                                 ),
                                               ),
-                                            ),
-                                          ),
+                                            )
+                                          
                                         );
                                       },
                                     )
