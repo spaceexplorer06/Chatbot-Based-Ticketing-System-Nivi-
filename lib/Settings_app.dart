@@ -11,8 +11,14 @@ class SettingsApp extends StatefulWidget {
 class _SettingsAppState extends State<SettingsApp> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-     backgroundColor:  Color.fromARGB(255, 158, 220, 160)
+    return Scaffold(
+      appBar: AppBar(
+        title: const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 65),
+          child: Text("Settings"),
+        ),
+      ),
+     backgroundColor: const Color.fromARGB(255, 158, 220, 160)
     );
   }
 }

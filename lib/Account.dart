@@ -11,8 +11,14 @@ class Account extends StatefulWidget {
 class _AccountState extends State<Account> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Color.fromARGB(255, 158, 220, 160),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 65),
+          child: Text("Account"),
+        ),
+      ),
+      backgroundColor: const Color.fromARGB(255, 158, 220, 160),
     );
   }
 }
