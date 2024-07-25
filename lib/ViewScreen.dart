@@ -20,43 +20,83 @@ class _ViewScreenState extends State<ViewScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(actions: [
-      PopupMenuButton<MenuAction>(
-        shadowColor: const Color.fromARGB(255, 5, 1, 1),
-        elevation: 20,
-        color: const Color.fromARGB(255, 208, 204, 197),
-        onSelected: (value) async {
-          switch (value) {
-            case MenuAction.Logout:
-              final shouldLogout = await showlogoutDialog(context);
-              if (shouldLogout) {
-                await FirebaseAuth.instance.signOut();
-                Navigator.of(context)
-                    .pushNamedAndRemoveUntil('/login/', (_) => false);
+      appBar: AppBar(
+        actions: [
+          PopupMenuButton<MenuAction>(
+            shadowColor: const Color.fromARGB(255, 5, 1, 1),
+            elevation: 20,
+            color: const Color.fromARGB(255, 208, 204, 197),
+            onSelected: (value) async {
+              switch (value) {
+                case MenuAction.Logout:
+                  final shouldLogout = await showlogoutDialog(context);
+                  if (shouldLogout) {
+                    await FirebaseAuth.instance.signOut();
+                    Navigator.of(context)
+                        .pushNamedAndRemoveUntil('/login/', (_) => false);
+                  }
               }
-          }
-        },
-        itemBuilder: (context) {
-          return const [
-            PopupMenuItem(value: MenuAction.Logout, child: Text('Logout'))
-          ];
-        },
+            },
+            itemBuilder: (context) {
+              return const [
+                PopupMenuItem(value: MenuAction.Logout, child: Text('Logout'))
+              ];
+            },
+          ),
+        ],
+        backgroundColor: const Color.fromARGB(255, 14, 93, 14),
       ),
-       
-    ],
-    backgroundColor: const Color.fromARGB(255, 14, 93, 14),
-    ),
-    drawer: Drawer(
-      child: Container(
-        color: const Color.fromARGB(255, 167, 235, 169),
-        child: ListView(
-          children: const [
-            DrawerHeader(child: Center(child: Text("HELLO", style: TextStyle(fontSize: 70),)))
-          ],
+      drawer: Drawer(
+        child: Container(
+          color: const Color.fromARGB(255, 167, 235, 169),
+          child: ListView(
+            children: [
+              const DrawerHeader(
+                  child: Center(
+                      child: Text(
+                "HELLO",
+                style: TextStyle(fontSize: 70),
+              ))),
+              const ListTile(
+                leading: Icon(Icons.home),
+                title: Text(
+                  "Home Page",
+                  style: TextStyle(fontSize: 20),
+                ),
+              ),
+              const ListTile(
+                leading: Icon(Icons.people),
+                title: Text(
+                  "Account",
+                  style: TextStyle(fontSize: 20),
+                ),
+              ),
+              const ListTile(
+                leading: Icon(Icons.settings),
+                title: Text(
+                  "Settings",
+                  style: TextStyle(fontSize: 20),
+                ),
+              ),
+              ListTile(
+                leading: const Icon(Icons.logout),
+                title: const Text(
+                  "Logout",
+                  style: TextStyle(fontSize: 20),
+                ),
+                onTap: () async {
+                  final shouldLogout = await showlogoutDialog(context);
+                  if (shouldLogout) {
+                    await FirebaseAuth.instance.signOut();
+                    Navigator.of(context)
+                        .pushNamedAndRemoveUntil('/login/', (_) => false);
+                  }
+                },
+              ),
+            ],
+          ),
         ),
       ),
-    ),
-  
     );
   }
 }
