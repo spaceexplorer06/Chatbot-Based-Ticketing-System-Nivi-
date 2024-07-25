@@ -44,11 +44,16 @@ class _ViewScreenState extends State<ViewScreen> {
       ),
        
     ],
-    backgroundColor: Color.fromARGB(255, 14, 93, 14),
+    backgroundColor: const Color.fromARGB(255, 14, 93, 14),
     ),
     drawer: Drawer(
       child: Container(
         color: const Color.fromARGB(255, 167, 235, 169),
+        child: ListView(
+          children: const [
+            DrawerHeader(child: Center(child: Text("HELLO", style: TextStyle(fontSize: 70),)))
+          ],
+        ),
       ),
     ),
   
