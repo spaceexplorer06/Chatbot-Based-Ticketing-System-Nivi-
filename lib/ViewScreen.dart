@@ -1,5 +1,7 @@
 import 'package:app/Account.dart';
 import 'package:app/Home.dart';
+import 'package:app/Settings_app.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -72,15 +74,20 @@ class _ViewScreenState extends State<ViewScreen> {
                   style: TextStyle(fontSize: 20),
                 ),
                 onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Account()));
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => const Account()));
                 },
               ),
-              const ListTile(
-                leading: Icon(Icons.settings),
-                title: Text(
+              ListTile(
+                leading: const Icon(Icons.settings),
+                title: const Text(
                   "Settings",
                   style: TextStyle(fontSize: 20),
                 ),
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const SettingsApp()));
+                },
               ),
               ListTile(
                 leading: const Icon(Icons.logout),

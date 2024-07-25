@@ -13,7 +13,7 @@ import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:app/Home.dart';
 import 'dart:developer' as devtools show log;
-
+import 'package:app/Settings_app.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
@@ -31,6 +31,7 @@ void main() {
         '/view/': (context) => const ViewScreen(),
         '/login/': (context) => const LoginScreen(),
         '/account/' : (context) => const Account(),
+        '/setting/' : (context) => const SettingsApp(),
       },
     ),
   );
