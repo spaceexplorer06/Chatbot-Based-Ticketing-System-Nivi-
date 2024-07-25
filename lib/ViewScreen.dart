@@ -2,6 +2,7 @@ import 'package:app/Home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class ViewScreen extends StatefulWidget {
   const ViewScreen({super.key});
@@ -41,7 +42,16 @@ class _ViewScreenState extends State<ViewScreen> {
           ];
         },
       ),
-      
-    ]));
+       
+    ],
+    backgroundColor: Color.fromARGB(255, 14, 93, 14),
+    ),
+    drawer: Drawer(
+      child: Container(
+        color: const Color.fromARGB(255, 167, 235, 169),
+      ),
+    ),
+  
+    );
   }
 }
