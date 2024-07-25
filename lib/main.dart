@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:app/Account.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:app/ViewScreen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -29,6 +30,7 @@ void main() {
         '/home/': (context) => const Home(),
         '/view/': (context) => const ViewScreen(),
         '/login/': (context) => const LoginScreen(),
+        '/account/' : (context) => const Account(),
       },
     ),
   );

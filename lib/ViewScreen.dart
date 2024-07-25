@@ -1,3 +1,4 @@
+import 'package:app/Account.dart';
 import 'package:app/Home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -64,12 +65,15 @@ class _ViewScreenState extends State<ViewScreen> {
                   style: TextStyle(fontSize: 20),
                 ),
               ),
-              const ListTile(
-                leading: Icon(Icons.people),
-                title: Text(
+              ListTile(
+                leading: const Icon(Icons.people),
+                title: const Text(
                   "Account",
                   style: TextStyle(fontSize: 20),
                 ),
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Account()));
+                },
               ),
               const ListTile(
                 leading: Icon(Icons.settings),
