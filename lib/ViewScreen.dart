@@ -24,34 +24,12 @@ class _ViewScreenState extends State<ViewScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: [
-          PopupMenuButton<MenuAction>(
-            shadowColor: const Color.fromARGB(255, 5, 1, 1),
-            elevation: 20,
-            color: const Color.fromARGB(255, 208, 204, 197),
-            onSelected: (value) async {
-              switch (value) {
-                case MenuAction.Logout:
-                  final shouldLogout = await showlogoutDialog(context);
-                  if (shouldLogout) {
-                    await FirebaseAuth.instance.signOut();
-                    Navigator.of(context)
-                        .pushNamedAndRemoveUntil('/login/', (_) => false);
-                  }
-              }
-            },
-            itemBuilder: (context) {
-              return const [
-                PopupMenuItem(value: MenuAction.Logout, child: Text('Logout'))
-              ];
-            },
-          ),
-        ],
-        backgroundColor: const Color.fromARGB(255, 14, 93, 14),
+        
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       ),
       drawer: Drawer(
         child: Container(
-          color: const Color.fromARGB(255, 167, 235, 169),
+          color: const Color.fromARGB(255, 210, 255, 211),
           child: ListView(
             children: [
               const DrawerHeader(
