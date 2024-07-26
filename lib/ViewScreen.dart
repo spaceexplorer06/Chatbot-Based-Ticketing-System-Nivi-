@@ -97,6 +97,10 @@ class _ViewScreenState extends State<ViewScreen> {
       ),
       body: Column(
         children: [
+          const Text(
+            "Search Destination : ",
+            style: TextStyle(fontSize: 25),
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: TextField(
