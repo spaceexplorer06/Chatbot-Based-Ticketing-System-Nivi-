@@ -25,7 +25,12 @@ class _ViewScreenState extends State<ViewScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        
+        actions: const <Widget>[
+          IconButton(
+            onPressed: null,
+            icon: Icon(Icons.notifications, color: Colors.black,),
+          )
+        ],
         backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       ),
       drawer: Drawer(
@@ -93,12 +98,11 @@ class _ViewScreenState extends State<ViewScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: TextField(
               decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.search),
-                hintText: "Search here...",
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
-                )
-              ),
+                  prefixIcon: const Icon(Icons.search),
+                  hintText: "Search here...",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  )),
             ),
           )
         ],
