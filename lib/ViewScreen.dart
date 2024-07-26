@@ -28,7 +28,10 @@ class _ViewScreenState extends State<ViewScreen> {
         actions: const <Widget>[
           IconButton(
             onPressed: null,
-            icon: Icon(Icons.notifications, color: Colors.black,),
+            icon: Icon(
+              Icons.notifications,
+              color: Colors.black,
+            ),
           )
         ],
         backgroundColor: const Color.fromARGB(255, 255, 255, 255),
