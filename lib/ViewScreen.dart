@@ -116,9 +116,14 @@ class _ViewScreenState extends State<ViewScreen> {
             padding: const EdgeInsets.all(25.0),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
-              child: const Image(image: AssetImage('assets/Images/California.jpg'))
+              child: const Image(
+                image: AssetImage(
+                  'assets/Images/California.jpg',
+                ),
+              ),
             ),
-          )
+          ),
+          
         ],
       ),
     );
