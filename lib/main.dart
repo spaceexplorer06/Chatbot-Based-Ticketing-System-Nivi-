@@ -127,7 +127,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: TextField(
+                      child: TextField(                            
                         controller: _password,
                         autocorrect: false,
                         enableSuggestions: false,

@@ -23,6 +23,7 @@ class _ViewScreenState extends State<ViewScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         
         backgroundColor: const Color.fromARGB(255, 255, 255, 255),
@@ -85,6 +86,22 @@ class _ViewScreenState extends State<ViewScreen> {
             ],
           ),
         ),
+      ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: TextField(
+              decoration: InputDecoration(
+                prefixIcon: const Icon(Icons.search),
+                hintText: "Search here...",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15),
+                )
+              ),
+            ),
+          )
+        ],
       ),
     );
   }
