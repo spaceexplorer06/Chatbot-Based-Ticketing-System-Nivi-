@@ -123,7 +123,6 @@ class _ViewScreenState extends State<ViewScreen> {
               ),
             ),
           ),
-          
         ],
       ),
     );
