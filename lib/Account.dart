@@ -1,4 +1,5 @@
 import 'package:app/Profile.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -10,6 +11,29 @@ class Account extends StatefulWidget {
   @override
   State<Account> createState() => _AccountState();
 }
+Future<bool> showlogout(BuildContext context) {
+  return showDialog<bool>(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+            backgroundColor: const Color.fromARGB(255, 210, 255, 189),
+            title: const Text('Log Out!'),
+            content: const Text('Are you sure you want to log out?'),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop(false);
+                  },
+                  child: const Text('Cancel')),
+              TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop(true);
+                  },
+                  child: const Text('Logout')),
+            ]);
+      }).then((value) => value ?? false);
+}
+
 
 class _AccountState extends State<Account> {
   @override
@@ -84,11 +108,17 @@ class _AccountState extends State<Account> {
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: IconButton(
-                    onPressed: null,
-                    icon: Icon(
+                    onPressed: ()async{
+                      final shouldLogout = await showlogout(context);
+                      if(shouldLogout){
+                        await FirebaseAuth.instance.signOut();
+                        Navigator.of(context).pushNamedAndRemoveUntil('/login/', (_) => false);
+                      }
+                    },
+                    icon: const Icon(
                       LineAwesomeIcons.angle_right_solid,
                       color: Colors.black,
                     )),

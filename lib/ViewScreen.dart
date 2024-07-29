@@ -13,9 +13,6 @@ class ViewScreen extends StatefulWidget {
   @override
   State<ViewScreen> createState() => _ViewScreenState();
 }
-
-enum MenuAction { Logout }
-
 class _ViewScreenState extends State<ViewScreen> {
   final currentUser = FirebaseAuth.instance.currentUser!; 
   @override
