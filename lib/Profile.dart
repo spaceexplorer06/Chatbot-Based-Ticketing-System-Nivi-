@@ -18,6 +18,14 @@ class _ProfileState extends State<Profile> {
           child: Text('Profile'),
         ),
       ),
+      body: const Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 30, horizontal: 115),
+            child: Icon(Icons.person, color : Colors.black, size: 130,),
+          )
+        ],
+      ),
       backgroundColor: const Color.fromARGB(255, 194, 244, 196),
     );
   }
