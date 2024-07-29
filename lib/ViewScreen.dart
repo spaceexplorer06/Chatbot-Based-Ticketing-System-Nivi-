@@ -17,9 +17,7 @@ class ViewScreen extends StatefulWidget {
 enum MenuAction { Logout }
 
 class _ViewScreenState extends State<ViewScreen> {
-  final currentUser = FirebaseAuth.instance.currentUser!;
-  // edit field
-  Future<void> editField(String field) async {}
+  final currentUser = FirebaseAuth.instance.currentUser!; 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -123,7 +121,6 @@ class _ViewScreenState extends State<ViewScreen> {
               ),
             ),
           ),
-          CarouselSlider(items: const [],options: CarouselOptions(viewportFraction: 0.8),)
         ],
       ),
     );
