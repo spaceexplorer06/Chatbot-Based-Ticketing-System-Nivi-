@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:app/Account.dart';
+import 'package:app/Profile.dart';
 import 'package:app/ViewScreen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
@@ -31,6 +32,7 @@ void main() {
         '/login/': (context) => const LoginScreen(),
         '/account/' : (context) => const Account(),
         '/setting/' : (context) => const SettingsApp(),
+        '/profile/' : (context) => const Profile(),
       },
     ),
   );
