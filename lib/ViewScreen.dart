@@ -1,7 +1,6 @@
 import 'package:app/Account.dart';
 import 'package:app/Home.dart';
 import 'package:app/Settings_app.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
