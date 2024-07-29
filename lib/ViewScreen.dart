@@ -1,6 +1,7 @@
 import 'package:app/Account.dart';
 import 'package:app/Home.dart';
 import 'package:app/Settings_app.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -122,6 +123,7 @@ class _ViewScreenState extends State<ViewScreen> {
               ),
             ),
           ),
+          CarouselSlider(items: const [],options: CarouselOptions(viewportFraction: 0.8),)
         ],
       ),
     );
