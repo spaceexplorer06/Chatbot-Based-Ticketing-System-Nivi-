@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -9,6 +10,7 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  final currentUser = FirebaseAuth.instance.currentUser!;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,12 +20,14 @@ class _ProfileState extends State<Profile> {
           child: Text('Profile'),
         ),
       ),
-      body: const Column(
+      body: Column(
         children: [
-          Padding(
+          const Padding(
             padding: EdgeInsets.symmetric(vertical: 30, horizontal: 115),
             child: Icon(Icons.person, color : Colors.black, size: 130,),
-          )
+          ),
+          Text(currentUser.email!, style: const TextStyle(fontSize: 20),),
+          const Divider(),
         ],
       ),
       backgroundColor: const Color.fromARGB(255, 194, 244, 196),

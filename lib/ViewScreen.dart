@@ -1,5 +1,6 @@
 import 'package:app/Account.dart';
 import 'package:app/Home.dart';
+import 'package:app/Profile.dart';
 import 'package:app/Settings_app.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -38,12 +39,16 @@ class _ViewScreenState extends State<ViewScreen> {
           color: const Color.fromARGB(255, 210, 255, 211),
           child: ListView(
             children: [
-              const DrawerHeader(
-                  child: Center(
-                      child: Text(
-                "HELLO",
-                style: TextStyle(fontSize: 70),
-              ))),
+               DrawerHeader(
+                  child: Column(
+                    children: [
+                      IconButton(onPressed: (){
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const Profile()));
+                      }, icon: const Icon(Icons.person,size: 70,color: Colors.black,),),
+                    Text(currentUser.email!),
+                    ],
+                  ),
+              ),
               const ListTile(
                 leading: Icon(Icons.home),
                 title: Text(
