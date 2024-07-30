@@ -1,4 +1,5 @@
 import 'package:app/Account.dart';
+import 'package:app/California.dart';
 import 'package:app/Home.dart';
 import 'package:app/Profile.dart';
 import 'package:app/Settings_app.dart';
@@ -141,9 +142,9 @@ class _ViewScreenState extends State<ViewScreen> {
                       ),
                     ),
                   ),
-                  const Row(
+                  Row(
                     children: [
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
                         child: Text(
                           'Golden Gate Bridge',
@@ -153,8 +154,10 @@ class _ViewScreenState extends State<ViewScreen> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 25),
-                        child: IconButton(onPressed: null, icon: Icon(LineAwesomeIcons.angle_right_solid,color: Colors.black,)),
+                        padding: const EdgeInsets.symmetric(horizontal: 25),
+                        child: IconButton(onPressed: (){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (route)=> const California()));
+                        }, icon: const Icon(LineAwesomeIcons.angle_right_solid,color: Colors.black,)),
                       ),
                     ],
                   ),
