@@ -1,3 +1,4 @@
+import 'package:app/Chat.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -17,14 +18,16 @@ class _CaliforniaState extends State<California> {
         bottom: const PreferredSize(preferredSize: Size.fromHeight(200), child: Column(mainAxisAlignment: MainAxisAlignment.start,crossAxisAlignment: CrossAxisAlignment.start,)),
         shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(bottomLeft : Radius.circular(600))),
       ),
-      body: const Padding(
-        padding: EdgeInsets.symmetric(vertical: 5),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 5),
         child: Column(
           children: [
             Row(mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Text('Join the chat :',style: TextStyle(fontSize: 20),),
-                IconButton(onPressed: null, icon: Icon(Icons.chat,color: Colors.black,))
+                const Text('Join the chat :',style: TextStyle(fontSize: 20),),
+                IconButton(onPressed: (){
+                  Navigator.of(context).push(MaterialPageRoute(builder: (route)=> const Chat()));
+                }, icon: const Icon(Icons.chat,color: Colors.black,))
               ],
             )
           ],
