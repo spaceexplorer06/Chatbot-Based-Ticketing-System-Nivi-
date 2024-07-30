@@ -12,7 +12,7 @@ class _ChatState extends State<Chat> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      backgroundColor: Color.fromARGB(255, 188, 255, 190),
+      backgroundColor:  Color.fromARGB(255, 188, 255, 190),
     );
   }
 }
