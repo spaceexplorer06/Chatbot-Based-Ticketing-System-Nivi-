@@ -6,6 +6,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ViewScreen extends StatefulWidget {
   const ViewScreen({super.key});
@@ -13,8 +15,10 @@ class ViewScreen extends StatefulWidget {
   @override
   State<ViewScreen> createState() => _ViewScreenState();
 }
+
 class _ViewScreenState extends State<ViewScreen> {
-  final currentUser = FirebaseAuth.instance.currentUser!; 
+  final _controller = PageController();
+  final currentUser = FirebaseAuth.instance.currentUser!;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,15 +40,23 @@ class _ViewScreenState extends State<ViewScreen> {
           color: const Color.fromARGB(255, 210, 255, 211),
           child: ListView(
             children: [
-               DrawerHeader(
-                  child: Column(
-                    children: [
-                      IconButton(onPressed: (){
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const Profile()));
-                      }, icon: const Icon(Icons.person,size: 70,color: Colors.black,),),
+              DrawerHeader(
+                child: Column(
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const Profile()));
+                      },
+                      icon: const Icon(
+                        Icons.person,
+                        size: 70,
+                        color: Colors.black,
+                      ),
+                    ),
                     Text(currentUser.email!),
-                    ],
-                  ),
+                  ],
+                ),
               ),
               const ListTile(
                 leading: Icon(Icons.home),
@@ -112,13 +124,41 @@ class _ViewScreenState extends State<ViewScreen> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(25.0),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: const Image(
-                image: AssetImage(
-                  'assets/Images/California.jpg',
-                ),
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            child: SizedBox(
+              height: 300,
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 200,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(30),
+                      child: const Image(
+                        image: AssetImage(
+                          'assets/Images/California.jpg',
+                        ),
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                  ),
+                  const Row(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                        child: Text(
+                          'Golden Gate Bridge',
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 25),
+                        child: IconButton(onPressed: null, icon: Icon(LineAwesomeIcons.angle_right_solid,color: Colors.black,)),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
           ),
