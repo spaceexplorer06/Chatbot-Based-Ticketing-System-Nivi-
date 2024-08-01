@@ -123,60 +123,140 @@ class _ViewScreenState extends State<ViewScreen> {
                   )),
             ),
           ),
-          CarouselSlider(
-              items: [
-                SizedBox(
-                  height: 400,
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: 200,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(30),
-                          child: const Image(
-                            image: AssetImage(
-                              'assets/Images/London.jpg',
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            child: CarouselSlider(
+                items: [
+                  SizedBox(
+                    height: 500,
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: 200,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(30),
+                            child: const Image(
+                              image: AssetImage(
+                                'assets/Images/London.jpg',
+                              ),
+                              fit: BoxFit.fill,
                             ),
-                            fit: BoxFit.fill,
                           ),
                         ),
+                        Row(children: [
+                          const Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                        child: Text(
+                          'London',
+                          style: TextStyle(fontSize: 20),
+                        ),
                       ),
-                    ],
-                  ),
-                ),
-                Row(
-                  children: [
-                    const Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 100, vertical: 15),
-                      child: Text(
-                        'London',
-                        style: TextStyle(fontSize: 20),
-                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 60),
+                        child: IconButton(
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (route) => const California()));
+                          },
+                          icon: Icon(LineAwesomeIcons.angle_right_solid, color: Colors.black,),
+                        ),
+                      )
+                        ],)
+                      ],
                     ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 80),
-                      child: IconButton(
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (route) => const California()));
-                        },
-                        icon: Icon(LineAwesomeIcons.angle_right_solid, color: Colors.black,),
+                  ),
+                  SizedBox(
+                    height: 500,
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: 200,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(30),
+                            child: const Image(
+                              image: AssetImage(
+                                'assets/Images/California.jpg',
+                              ),
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                        ),
+                        Row(children: [
+                          const Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                        child: Text(
+                          'California',
+                          style: TextStyle(fontSize: 20),
+                        ),
                       ),
-                    )
-                  ],
-                )
-              ],
-              options: CarouselOptions(
-                height: 180,
-                enlargeCenterPage: true,
-                autoPlay: true,
-                aspectRatio: 16 / 9,
-                autoPlayCurve: Curves.fastOutSlowIn,
-                enableInfiniteScroll: true,
-                autoPlayAnimationDuration: Duration(milliseconds: 800),
-                viewportFraction: 0.8,
-              ))
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 50),
+                        child: IconButton(
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (route) => const California()));
+                          },
+                          icon: Icon(LineAwesomeIcons.angle_right_solid, color: Colors.black,),
+                        ),
+                      )
+                        ],)
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 500,
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: 200,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(30),
+                            child: const Image(
+                              image: AssetImage(
+                                'assets/Images/Paris.jpg',
+                              ),
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                        ),
+                        Row(children: [
+                          const Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                        child: Text(
+                          'Paris, France',
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 30),
+                        child: IconButton(
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (route) => const California()));
+                          },
+                          icon: Icon(LineAwesomeIcons.angle_right_solid, color: Colors.black,),
+                        ),
+                      )
+                        ],)
+                      ],
+                    ),
+                  ),
+                ],
+                options: CarouselOptions(
+                  height: 400,
+                  enlargeCenterPage: true,
+                  autoPlay: true,
+                  autoPlayInterval: Duration(seconds: 3),
+                  aspectRatio: 16 / 9,
+                  autoPlayCurve: Curves.fastOutSlowIn,
+                  enableInfiniteScroll: true,
+                  autoPlayAnimationDuration: Duration(milliseconds: 600),
+                  viewportFraction: 0.8,
+                )),
+          )
         ],
       ),
     );
