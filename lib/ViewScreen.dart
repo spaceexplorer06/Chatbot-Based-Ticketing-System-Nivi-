@@ -125,9 +125,8 @@ class _ViewScreenState extends State<ViewScreen> {
           ),
           CarouselSlider(
               items: [
-
                 SizedBox(
-                  height: 300,
+                  height: 400,
                   child: Column(
                     children: [
                       SizedBox(
