@@ -139,7 +139,7 @@ class _ViewScreenState extends State<ViewScreen> {
             child: CarouselSlider(
                 items: [
                   SizedBox(
-                    height: 500,
+                    height: 200,
                     child: Column(
                       children: [
                         SizedBox(
@@ -178,7 +178,7 @@ class _ViewScreenState extends State<ViewScreen> {
                     ),
                   ),
                   SizedBox(
-                    height: 500,
+                    height: 200,
                     child: Column(
                       children: [
                         SizedBox(
@@ -217,7 +217,7 @@ class _ViewScreenState extends State<ViewScreen> {
                     ),
                   ),
                   SizedBox(
-                    height: 500,
+                    height: 200,
                     child: Column(
                       children: [
                         SizedBox(
@@ -257,7 +257,7 @@ class _ViewScreenState extends State<ViewScreen> {
                   ),
                 ],
                 options: CarouselOptions(
-                  height: 400,
+                  height: 300,
                   enlargeCenterPage: true,
                   autoPlay: true,
                   autoPlayInterval: Duration(seconds: 3),
