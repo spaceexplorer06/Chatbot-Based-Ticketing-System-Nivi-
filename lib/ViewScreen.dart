@@ -1,4 +1,5 @@
 import 'package:app/Account.dart';
+import 'package:app/Budapest.dart';
 import 'package:app/California.dart';
 import 'package:app/Favourite.dart';
 import 'package:app/Home.dart';
@@ -25,6 +26,7 @@ class _ViewScreenState extends State<ViewScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       appBar: AppBar(
         actions: const <Widget>[
@@ -148,6 +150,45 @@ class _ViewScreenState extends State<ViewScreen> {
                             borderRadius: BorderRadius.circular(30),
                             child: const Image(
                               image: AssetImage(
+                                'assets/Images/Budapest.jpg',
+                              ),
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                        ),
+                        Row(children: [
+                          const Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                        child: Text(
+                          'Budapest',
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 30),
+                        child: IconButton(
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (route) => const Budapest()));
+                          },
+                          icon: Icon(LineAwesomeIcons.angle_right_solid, color: Colors.black,),
+                        ),
+                      )
+                        ],)
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 200,
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: 200,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(30),
+                            child: const Image(
+                              image: AssetImage(
                                 'assets/Images/London.jpg',
                               ),
                               fit: BoxFit.fill,
@@ -255,6 +296,7 @@ class _ViewScreenState extends State<ViewScreen> {
                       ],
                     ),
                   ),
+                   
                 ],
                 options: CarouselOptions(
                   height: 300,

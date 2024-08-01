@@ -44,6 +44,7 @@ dependencies:
   carousel_slider: ^4.2.1
   line_awesome_flutter: ^3.0.1
   smooth_page_indicator: ^1.2.0+3
+  like_button: ^2.0.5
 
 dev_dependencies:
   flutter_test:
@@ -95,6 +96,7 @@ flutter:
     - assets/Images/California.jpg
     - assets/images/London.jpg
     - assets/Images/Paris.jpg
+    - assets/Images/Budapest.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

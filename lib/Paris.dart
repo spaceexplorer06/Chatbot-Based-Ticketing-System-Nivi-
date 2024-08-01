@@ -1,6 +1,7 @@
 import 'package:app/Chat.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:like_button/like_button.dart';
 
 class Paris extends StatefulWidget {
   const Paris({super.key});
@@ -15,7 +16,11 @@ class _ParisState extends State<Paris> {
     return Scaffold(
       appBar: AppBar(
         actions: const <Widget>[
-          IconButton(onPressed: null, icon: Icon(Icons.favorite,color: Color.fromARGB(255, 255, 17, 0),))
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: LikeButton(size: 30,
+            animationDuration: Duration(milliseconds: 1000),),
+          )
         ],
         flexibleSpace: const ClipRRect(
             borderRadius: BorderRadius.only(

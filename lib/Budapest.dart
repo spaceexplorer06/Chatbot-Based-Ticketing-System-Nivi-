@@ -3,14 +3,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:like_button/like_button.dart';
 
-class London extends StatefulWidget {
-  const London({super.key});
+class Budapest extends StatefulWidget {
+  const Budapest({super.key});
 
   @override
-  State<London> createState() => _LondonState();
+  State<Budapest> createState() => _BudapestState();
 }
 
-class _LondonState extends State<London> {
+class _BudapestState extends State<Budapest> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,9 +24,9 @@ class _LondonState extends State<London> {
         ],
         flexibleSpace: const ClipRRect(
             borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(250),
+                bottomLeft: Radius.circular(350),
                 bottomRight: Radius.circular(0)),
-            child: Image(image: AssetImage('assets/Images/London.jpg'))),
+            child: Image(image: AssetImage('assets/Images/Budapest.jpg'))),
         bottom: const PreferredSize(
             preferredSize: Size.fromHeight(200),
             child: Column(
