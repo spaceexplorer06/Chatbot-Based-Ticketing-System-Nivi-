@@ -3,6 +3,7 @@ import 'package:app/California.dart';
 import 'package:app/Home.dart';
 import 'package:app/Profile.dart';
 import 'package:app/Settings_app.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -122,160 +123,61 @@ class _ViewScreenState extends State<ViewScreen> {
                   )),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20),
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  SizedBox(
-                    height: 300,
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 200,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(30),
-                            child: const Image(
-                              image: AssetImage(
-                                'assets/Images/California.jpg',
-                              ),
-                              fit: BoxFit.fill,
+          CarouselSlider(
+              items: [
+
+                SizedBox(
+                  height: 300,
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 200,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(30),
+                          child: const Image(
+                            image: AssetImage(
+                              'assets/Images/London.jpg',
                             ),
+                            fit: BoxFit.fill,
                           ),
                         ),
-                        Row(
-                          children: [
-                            const Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 40, vertical: 15),
-                              child: Text(
-                                'Golden Gate Bridge',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 25),
-                              child: IconButton(
-                                  onPressed: () {
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (route) =>
-                                                const California()));
-                                  },
-                                  icon: const Icon(
-                                    LineAwesomeIcons.angle_right_solid,
-                                    color: Colors.black,
-                                  )),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                  SizedBox(
-                    height: 300,
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 200,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(30),
-                            child: const Image(
-                              image: AssetImage(
-                                'assets/Images/London.jpg',
-                              ),
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                        ),
-                        Row(
-                          children: [
-                            const Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 100, vertical: 15),
-                              child: Text(
-                                'London',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 80),
-                              child: IconButton(
-                                  onPressed: () {
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (route) =>
-                                                const California()));
-                                  },
-                                  icon: const Icon(
-                                    LineAwesomeIcons.angle_right_solid,
-                                    color: Colors.black,
-                                  )),
-                            ),
-                          ],
-                        ),
-                      ],
+                ),
+                Row(
+                  children: [
+                    const Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 100, vertical: 15),
+                      child: Text(
+                        'London',
+                        style: TextStyle(fontSize: 20),
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 300,
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 200,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(30),
-                            child: const Image(
-                              image: AssetImage(
-                                'assets/Images/Paris.jpg',
-                              ),
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                        ),
-                        Row(
-                          children: [
-                            const Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 65, vertical: 15),
-                              child: Text(
-                                'Paris, France',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 30),
-                              child: IconButton(
-                                  onPressed: () {
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (route) =>
-                                                const California()));
-                                  },
-                                  icon: const Icon(
-                                    LineAwesomeIcons.angle_right_solid,
-                                    color: Colors.black,
-                                  )),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 80),
+                      child: IconButton(
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (route) => const California()));
+                        },
+                        icon: Icon(LineAwesomeIcons.angle_right_solid, color: Colors.black,),
+                      ),
+                    )
+                  ],
+                )
+              ],
+              options: CarouselOptions(
+                height: 180,
+                enlargeCenterPage: true,
+                autoPlay: true,
+                aspectRatio: 16 / 9,
+                autoPlayCurve: Curves.fastOutSlowIn,
+                enableInfiniteScroll: true,
+                autoPlayAnimationDuration: Duration(milliseconds: 800),
+                viewportFraction: 0.8,
+              ))
         ],
       ),
     );
