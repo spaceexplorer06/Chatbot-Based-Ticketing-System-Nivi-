@@ -2,14 +2,14 @@ import 'package:app/Chat.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class London extends StatefulWidget {
-  const London({super.key});
+class Paris extends StatefulWidget {
+  const Paris({super.key});
 
   @override
-  State<London> createState() => _LondonState();
+  State<Paris> createState() => _ParisState();
 }
 
-class _LondonState extends State<London> {
+class _ParisState extends State<Paris> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +21,7 @@ class _LondonState extends State<London> {
             borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(250),
                 bottomRight: Radius.circular(0)),
-            child: Image(image: AssetImage('assets/Images/London.jpg'))),
+            child: Image(image: AssetImage('assets/Images/Paris.jpg'))),
         bottom: const PreferredSize(
             preferredSize: Size.fromHeight(200),
             child: Column(

@@ -1,6 +1,8 @@
 import 'package:app/Account.dart';
 import 'package:app/California.dart';
 import 'package:app/Home.dart';
+import 'package:app/London.dart';
+import 'package:app/Paris.dart';
 import 'package:app/Profile.dart';
 import 'package:app/Settings_app.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -157,7 +159,7 @@ class _ViewScreenState extends State<ViewScreen> {
                         child: IconButton(
                           onPressed: () {
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (route) => const California()));
+                                builder: (route) => const London()));
                           },
                           icon: Icon(LineAwesomeIcons.angle_right_solid, color: Colors.black,),
                         ),
@@ -235,7 +237,7 @@ class _ViewScreenState extends State<ViewScreen> {
                         child: IconButton(
                           onPressed: () {
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (route) => const California()));
+                                builder: (route) => const Paris()));
                           },
                           icon: Icon(LineAwesomeIcons.angle_right_solid, color: Colors.black,),
                         ),
