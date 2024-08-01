@@ -1,5 +1,6 @@
 import 'package:app/Account.dart';
 import 'package:app/California.dart';
+import 'package:app/Favourite.dart';
 import 'package:app/Home.dart';
 import 'package:app/London.dart';
 import 'package:app/Paris.dart';
@@ -67,6 +68,13 @@ class _ViewScreenState extends State<ViewScreen> {
                   style: TextStyle(fontSize: 20),
                 ),
               ),
+               ListTile(
+                leading: Icon(Icons.favorite),
+                title: const Text("Favourites",style: TextStyle(fontSize: 20),),
+                onTap: (){
+                  Navigator.of(context).push(MaterialPageRoute(builder: (route)=>const Favourite()));
+                },
+              ),
               ListTile(
                 leading: const Icon(Icons.people),
                 title: const Text(
@@ -78,6 +86,7 @@ class _ViewScreenState extends State<ViewScreen> {
                       MaterialPageRoute(builder: (context) => const Account()));
                 },
               ),
+             
               ListTile(
                 leading: const Icon(Icons.settings),
                 title: const Text(
