@@ -1,10 +1,10 @@
 import 'package:app/Account.dart';
-import 'package:app/Budapest.dart';
-import 'package:app/California.dart';
+import 'package:app/Home/Budapest.dart';
+import 'package:app/Home/California.dart';
 import 'package:app/Favourite.dart';
 import 'package:app/Home.dart';
 import 'package:app/London.dart';
-import 'package:app/Paris.dart';
+import 'package:app/Home/Paris.dart';
 import 'package:app/Profile.dart';
 import 'package:app/Settings_app.dart';
 import 'package:carousel_slider/carousel_slider.dart';
