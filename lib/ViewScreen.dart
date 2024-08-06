@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:app/Account.dart';
 import 'package:app/Home/Budapest.dart';
 import 'package:app/Home/California.dart';
@@ -6,6 +8,7 @@ import 'package:app/Home.dart';
 import 'package:app/London.dart';
 import 'package:app/Home/Paris.dart';
 import 'package:app/Profile.dart';
+import 'package:app/Search_model.dart';
 import 'package:app/Settings_app.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -70,11 +73,15 @@ class _ViewScreenState extends State<ViewScreen> {
                   style: TextStyle(fontSize: 20),
                 ),
               ),
-               ListTile(
+              ListTile(
                 leading: Icon(Icons.favorite),
-                title: const Text("Favourites",style: TextStyle(fontSize: 20),),
-                onTap: (){
-                  Navigator.of(context).push(MaterialPageRoute(builder: (route)=>const Favourite()));
+                title: const Text(
+                  "Favourites",
+                  style: TextStyle(fontSize: 20),
+                ),
+                onTap: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (route) => const Favourite()));
                 },
               ),
               ListTile(
@@ -88,7 +95,6 @@ class _ViewScreenState extends State<ViewScreen> {
                       MaterialPageRoute(builder: (context) => const Account()));
                 },
               ),
-             
               ListTile(
                 leading: const Icon(Icons.settings),
                 title: const Text(
@@ -156,26 +162,31 @@ class _ViewScreenState extends State<ViewScreen> {
                             ),
                           ),
                         ),
-                        Row(children: [
-                          const Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                        child: Text(
-                          'Budapest',
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 30),
-                        child: IconButton(
-                          onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (route) => const Budapest()));
-                          },
-                          icon: Icon(LineAwesomeIcons.angle_right_solid, color: Colors.black,),
-                        ),
-                      )
-                        ],)
+                        Row(
+                          children: [
+                            const Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 20, vertical: 15),
+                              child: Text(
+                                'Budapest',
+                                style: TextStyle(fontSize: 20),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 30),
+                              child: IconButton(
+                                onPressed: () {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (route) => const Budapest()));
+                                },
+                                icon: Icon(
+                                  LineAwesomeIcons.angle_right_solid,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            )
+                          ],
+                        )
                       ],
                     ),
                   ),
@@ -195,26 +206,31 @@ class _ViewScreenState extends State<ViewScreen> {
                             ),
                           ),
                         ),
-                        Row(children: [
-                          const Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                        child: Text(
-                          'London',
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 60),
-                        child: IconButton(
-                          onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (route) => const London()));
-                          },
-                          icon: Icon(LineAwesomeIcons.angle_right_solid, color: Colors.black,),
-                        ),
-                      )
-                        ],)
+                        Row(
+                          children: [
+                            const Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 20, vertical: 15),
+                              child: Text(
+                                'London',
+                                style: TextStyle(fontSize: 20),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 60),
+                              child: IconButton(
+                                onPressed: () {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (route) => const London()));
+                                },
+                                icon: Icon(
+                                  LineAwesomeIcons.angle_right_solid,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            )
+                          ],
+                        )
                       ],
                     ),
                   ),
@@ -234,26 +250,31 @@ class _ViewScreenState extends State<ViewScreen> {
                             ),
                           ),
                         ),
-                        Row(children: [
-                          const Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                        child: Text(
-                          'California',
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 50),
-                        child: IconButton(
-                          onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (route) => const California()));
-                          },
-                          icon: Icon(LineAwesomeIcons.angle_right_solid, color: Colors.black,),
-                        ),
-                      )
-                        ],)
+                        Row(
+                          children: [
+                            const Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 20, vertical: 15),
+                              child: Text(
+                                'California',
+                                style: TextStyle(fontSize: 20),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 50),
+                              child: IconButton(
+                                onPressed: () {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (route) => const California()));
+                                },
+                                icon: Icon(
+                                  LineAwesomeIcons.angle_right_solid,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            )
+                          ],
+                        )
                       ],
                     ),
                   ),
@@ -273,30 +294,34 @@ class _ViewScreenState extends State<ViewScreen> {
                             ),
                           ),
                         ),
-                        Row(children: [
-                          const Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                        child: Text(
-                          'Paris, France',
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 30),
-                        child: IconButton(
-                          onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (route) => const Paris()));
-                          },
-                          icon: Icon(LineAwesomeIcons.angle_right_solid, color: Colors.black,),
-                        ),
-                      )
-                        ],)
+                        Row(
+                          children: [
+                            const Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 20, vertical: 15),
+                              child: Text(
+                                'Paris, France',
+                                style: TextStyle(fontSize: 20),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 30),
+                              child: IconButton(
+                                onPressed: () {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (route) => const Paris()));
+                                },
+                                icon: Icon(
+                                  LineAwesomeIcons.angle_right_solid,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            )
+                          ],
+                        )
                       ],
                     ),
                   ),
-                   
                 ],
                 options: CarouselOptions(
                   height: 300,
@@ -315,3 +340,4 @@ class _ViewScreenState extends State<ViewScreen> {
     );
   }
 }
+
