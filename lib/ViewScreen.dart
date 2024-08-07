@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:app/Account.dart';
 import 'package:app/Home/Budapest.dart';
@@ -8,7 +7,6 @@ import 'package:app/Home.dart';
 import 'package:app/London.dart';
 import 'package:app/Home/Paris.dart';
 import 'package:app/Profile.dart';
-import 'package:app/Search_model.dart';
 import 'package:app/Settings_app.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -150,16 +148,18 @@ class _ViewScreenState extends State<ViewScreen> {
                     height: 200,
                     child: Column(
                       children: [
-                        SizedBox(
+                        Container(
                           height: 200,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(30),
-                            child: const Image(
-                              image: AssetImage(
-                                'assets/Images/Budapest.jpg',
-                              ),
-                              fit: BoxFit.fill,
-                            ),
+                          width: 300,
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(50),
+                        image: const DecorationImage(
+                          image: AssetImage('assets/Images/Budapest.jpg'),
+                          fit: BoxFit.fill,
+                        ),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 240, ),
+                            child: Icon(Icons.favorite, color: Colors.red,),
                           ),
                         ),
                         Row(
@@ -194,16 +194,18 @@ class _ViewScreenState extends State<ViewScreen> {
                     height: 200,
                     child: Column(
                       children: [
-                        SizedBox(
+                        Container(
                           height: 200,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(30),
-                            child: const Image(
-                              image: AssetImage(
-                                'assets/Images/London.jpg',
-                              ),
-                              fit: BoxFit.fill,
-                            ),
+                          width: 300,
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(50),
+                        image: const DecorationImage(
+                          image: AssetImage('assets/Images/London.jpg'),
+                          fit: BoxFit.fill,
+                        ),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 240, ),
+                            child: Icon(Icons.favorite, color: Colors.red,),
                           ),
                         ),
                         Row(
@@ -238,16 +240,18 @@ class _ViewScreenState extends State<ViewScreen> {
                     height: 200,
                     child: Column(
                       children: [
-                        SizedBox(
+                        Container(
                           height: 200,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(30),
-                            child: const Image(
-                              image: AssetImage(
-                                'assets/Images/California.jpg',
-                              ),
-                              fit: BoxFit.fill,
-                            ),
+                          width: 300,
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(50),
+                        image: const DecorationImage(
+                          image: AssetImage('assets/Images/California.jpg'),
+                          fit: BoxFit.fill,
+                        ),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 240, ),
+                            child: Icon(Icons.favorite, color: Colors.red,),
                           ),
                         ),
                         Row(
@@ -282,16 +286,18 @@ class _ViewScreenState extends State<ViewScreen> {
                     height: 200,
                     child: Column(
                       children: [
-                        SizedBox(
+                        Container(
                           height: 200,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(30),
-                            child: const Image(
-                              image: AssetImage(
-                                'assets/Images/Paris.jpg',
-                              ),
-                              fit: BoxFit.fill,
-                            ),
+                          width: 300,
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(50),
+                        image: const DecorationImage(
+                          image: AssetImage('assets/Images/Paris.jpg'),
+                          fit: BoxFit.fill,
+                        ),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 240, ),
+                            child: Icon(Icons.favorite, color: Colors.red,),
                           ),
                         ),
                         Row(
