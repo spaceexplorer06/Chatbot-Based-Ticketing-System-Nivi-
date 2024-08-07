@@ -1,6 +1,7 @@
 import 'package:app/Account.dart';
 import 'package:app/Profile.dart';
 import 'package:app/Search.dart';
+import 'package:app/Search_main.dart';
 import 'package:app/ViewScreen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
