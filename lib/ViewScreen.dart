@@ -94,6 +94,17 @@ class _ViewScreenState extends State<ViewScreen> {
                 },
               ),
               ListTile(
+                leading: const Icon(Icons.chat),
+                title: const Text(
+                  "Nivi",
+                  style: TextStyle(fontSize: 20),
+                ),
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const SettingsApp()));
+                },
+              ),
+              ListTile(
                 leading: const Icon(Icons.settings),
                 title: const Text(
                   "Settings",
