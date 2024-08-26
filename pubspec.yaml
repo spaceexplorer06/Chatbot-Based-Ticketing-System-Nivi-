@@ -30,6 +30,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  video_player: ^2.9.1
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -41,12 +42,17 @@ dependencies:
   cloud_firestore: ^5.1.0
   quickalert: ^1.1.0
   google_sign_in: ^6.2.1
-  carousel_slider: ^4.2.1
   line_awesome_flutter: ^3.0.1
   smooth_page_indicator: ^1.2.0+3
   like_button: ^2.0.5
   dash_chat_2: ^0.0.21
   chat_gpt_sdk: ^3.1.0
+  carousel_slider:
+    git:
+      url: https://github.com/sampaio96/flutter_carousel_slider.git
+      ref: master
+  flutter_gemini: ^2.0.5
+  image_picker: ^1.1.2
 
 dev_dependencies:
   flutter_test:

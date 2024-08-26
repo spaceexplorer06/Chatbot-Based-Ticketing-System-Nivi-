@@ -1,9 +1,11 @@
+import 'package:app/API.dart';
 import 'package:app/Account.dart';
 import 'package:app/Profile.dart';
 import 'package:app/ViewScreen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:rive/rive.dart';
 import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -12,6 +14,7 @@ import 'dart:developer' as devtools show log;
 import 'package:app/Settings_app.dart';
 
 void main() {
+  Gemini.init(apiKey: GEMINI_API_KEY);
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
     MaterialApp(

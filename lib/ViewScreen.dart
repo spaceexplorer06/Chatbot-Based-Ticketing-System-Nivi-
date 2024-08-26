@@ -6,13 +6,12 @@ import 'package:app/Favourite.dart';
 import 'package:app/Home.dart';
 import 'package:app/London.dart';
 import 'package:app/Home/Paris.dart';
+import 'package:app/Nivi_bot.dart';
 import 'package:app/Profile.dart';
 import 'package:app/Settings_app.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart' hide CarouselController;
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 class ViewScreen extends StatefulWidget {
@@ -101,7 +100,7 @@ class _ViewScreenState extends State<ViewScreen> {
                 ),
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const SettingsApp()));
+                      builder: (context) => const NiviBot()));
                 },
               ),
               ListTile(
