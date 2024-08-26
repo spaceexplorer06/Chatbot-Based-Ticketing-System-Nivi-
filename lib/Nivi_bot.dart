@@ -1,7 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:jose/jose.dart';  // Import the jose package
+import 'package:jose/jose.dart';  
 import 'package:http/http.dart' as http;
+import 'package:uuid/uuid.dart';
 
 class NiviBot extends StatefulWidget {
   @override
@@ -11,13 +12,17 @@ class NiviBot extends StatefulWidget {
 class _NiviBotState extends State<NiviBot> {
   final List<ChatMessage> _messages = <ChatMessage>[];
   final TextEditingController _textController = TextEditingController();
+  late String _sessionId;
 
   @override
   void initState() {
     super.initState();
+    _sessionId = Uuid().v4();  // Generate a unique session ID
   }
 
   Future<void> _handleSubmitted(String text) async {
+    if (text.isEmpty) return;
+
     _textController.clear();
 
     ChatMessage message = ChatMessage(
@@ -29,7 +34,6 @@ class _NiviBotState extends State<NiviBot> {
       _messages.insert(0, message);
     });
 
-    // Send message to Dialogflow via REST API
     final String responseText = await _sendMessageToDialogflow(text);
 
     if (responseText.isNotEmpty) {
@@ -88,34 +92,39 @@ WEYVoCR2eAlpbl0vblLKOiUh
     final jwk = JsonWebKey.fromPem(privateKey);
     final builder = JsonWebSignatureBuilder()
       ..jsonContent = jwtClaimSet.toJson()
-      ..addRecipient(jwk);
+      ..addRecipient(jwk, algorithm: 'RS256');
 
     final jws = builder.build();
     final token = jws.toCompactSerialization();
 
-    final response = await http.post(
-      Uri.parse('https://dialogflow.googleapis.com/v2/projects/$projectId/agent/sessions/123456:detectIntent'),
-      headers: {
-        'Authorization': 'Bearer $token',
-        'Content-Type': 'application/json',
-      },
-      body: jsonEncode({
-        'queryInput': {
-          'text': {
-            'text': query,
-            'languageCode': 'en',
-          },
+    try {
+      final response = await http.post(
+        Uri.parse('https://dialogflow.googleapis.com/v2/projects/$projectId/agent/sessions/$_sessionId:detectIntent'),
+        headers: {
+          'Authorization': 'Bearer $token',
+          'Content-Type': 'application/json',
         },
-      }),
-    );
+        body: jsonEncode({
+          'queryInput': {
+            'text': {
+              'text': query,
+              'languageCode': 'en',
+            },
+          },
+        }),
+      );
 
-    if (response.statusCode == 200) {
-      final Map<String, dynamic> jsonResponse = jsonDecode(response.body);
-      final String fulfillmentText = jsonResponse['queryResult']['fulfillmentText'];
-      return fulfillmentText;
-    } else {
-      print('Dialogflow API request failed with status: ${response.statusCode}');
-      return '';
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> jsonResponse = jsonDecode(response.body);
+        final String fulfillmentText = jsonResponse['queryResult']['fulfillmentText'];
+        return fulfillmentText;
+      } else {
+        print('Dialogflow API request failed with status: ${response.statusCode}');
+        return 'Something went wrong. Please try again later.';
+      }
+    } catch (e) {
+      print('Error occurred: $e');
+      return 'Error occurred: $e';
     }
   }
 
@@ -123,7 +132,10 @@ WEYVoCR2eAlpbl0vblLKOiUh
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('NiviBot'),
+        title: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 70),
+          child: Text('NiviBot'),
+        )
       ),
       body: Column(
         children: <Widget>[
@@ -143,7 +155,8 @@ WEYVoCR2eAlpbl0vblLKOiUh
                 Flexible(
                   child: TextField(
                     controller: _textController,
-                    decoration: InputDecoration.collapsed(hintText: "Send a message"),
+                    decoration: InputDecoration.collapsed(hintText: "Send a message", border: OutlineInputBorder(borderRadius: BorderRadius.circular(20),borderSide: const BorderSide(color : Colors.black,))),
+                    onSubmitted: _handleSubmitted,
                   ),
                 ),
                 IconButton(
@@ -158,32 +171,41 @@ WEYVoCR2eAlpbl0vblLKOiUh
     );
   }
 
-  Widget _buildChatMessage(ChatMessage message) {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 10.0),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Container(
-            margin: const EdgeInsets.only(right: 16.0),
-            child: CircleAvatar(
-              child: Text(message.isUserMessage ? 'U' : 'B'),
-            ),
+ Widget _buildChatMessage(ChatMessage message) {
+  return Container(
+    margin: const EdgeInsets.symmetric(vertical: 10.0),
+    child: Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Container(
+          margin: const EdgeInsets.only(right: 16.0),
+          child: CircleAvatar(
+            child: Text(message.isUserMessage ? 'U' : 'N'),
           ),
-          Column(
+        ),
+        Expanded(
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text(message.isUserMessage ? 'User' : 'Bot', style: Theme.of(context).textTheme.titleMedium),
+              Text(
+                message.isUserMessage ? 'User' : 'Nivi',
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
               Container(
                 margin: const EdgeInsets.only(top: 5.0),
-                child: Text(message.text),
+                child: Text(
+                  message.text,
+                  overflow: TextOverflow.visible, // Prevents text overflow
+                ),
               ),
             ],
           ),
-        ],
-      ),
-    );
-  }
+        ),
+      ],
+    ),
+  );
+}
+
 }
 
 class ChatMessage {
@@ -193,7 +215,3 @@ class ChatMessage {
   ChatMessage({required this.text, required this.isUserMessage});
 }
 
-void main() => runApp(MaterialApp(
-      title: 'NiviBot',
-      home: NiviBot(),
-    ));

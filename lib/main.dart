@@ -1,4 +1,3 @@
-import 'package:app/API.dart';
 import 'package:app/Account.dart';
 import 'package:app/Profile.dart';
 import 'package:app/ViewScreen.dart';
