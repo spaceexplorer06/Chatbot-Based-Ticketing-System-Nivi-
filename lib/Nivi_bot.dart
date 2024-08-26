@@ -1,126 +1,199 @@
-import 'dart:io';
-import 'dart:typed_data';
-
-import 'package:dash_chat_2/dash_chat_2.dart';
+import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter_gemini/flutter_gemini.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:jose/jose.dart';  // Import the jose package
+import 'package:http/http.dart' as http;
 
 class NiviBot extends StatefulWidget {
-  const NiviBot({super.key});
-
   @override
-  State<NiviBot> createState() => _NiviBotState();
+  _NiviBotState createState() => _NiviBotState();
 }
 
 class _NiviBotState extends State<NiviBot> {
-  final Gemini gemini = Gemini.instance;
+  final List<ChatMessage> _messages = <ChatMessage>[];
+  final TextEditingController _textController = TextEditingController();
 
-  List<ChatMessage> messages = [];
+  @override
+  void initState() {
+    super.initState();
+  }
 
-  ChatUser currentUser = ChatUser(id: "0", firstName: "User");
-  
-  // Update the AI's name here
-  ChatUser niviUser = ChatUser(
-    id: "1",
-    firstName: "Nivi",
-  );
+  Future<void> _handleSubmitted(String text) async {
+    _textController.clear();
+
+    ChatMessage message = ChatMessage(
+      text: text,
+      isUserMessage: true,
+    );
+
+    setState(() {
+      _messages.insert(0, message);
+    });
+
+    // Send message to Dialogflow via REST API
+    final String responseText = await _sendMessageToDialogflow(text);
+
+    if (responseText.isNotEmpty) {
+      ChatMessage botMessage = ChatMessage(
+        text: responseText,
+        isUserMessage: false,
+      );
+
+      setState(() {
+        _messages.insert(0, botMessage);
+      });
+    }
+  }
+
+  Future<String> _sendMessageToDialogflow(String query) async {
+    final String privateKey = """-----BEGIN PRIVATE KEY-----
+MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCwmSbSX+lRWn29
+I2e3sctm+aceG0aWfUApME1q6+/BYqGynjZuj1FaLzxuZFSt2NGbvaZR+ebbB8ff
+D3ZR416NDkRWasR+Wc+kvf7yVeUKjjFqQDXaJDrsdcZRUNMaIaVV0SPHPnuHLZGn
+FpykKw93Ti6YKe155yX591lAFcCKRHHGezI9HtIAht7Z7WvGVf9WeduttwjsgFKF
+swJn1IMXP0GNteHszC+SeAjg681iacau7LbAHzReXhkJX2RUysDyrv8SUEwDfR6l
+VBXcknD1quidZhAo48mlFkDG9TLzUaXB75A4Dv3lhrD3pFhCLIemHw6Y9rAIRMUS
+VTT1A+P3AgMBAAECggEABTCbCXe0HaXxKAvQUn+xIJeZp7LZgjawGgXHYKsKYr6J
+TfyEUP95PpNAzWW5b1p93nvWVXZoqGs0HoQP0BxEfRS8QWXl3Gi7R3Yl9e08S/Ed
+1qeIbZ6+9JAJgf5EFfKDL2B0ErjtXG2kaCqr888oJzNu/x3MUtbOMOhqAQ4imG2Z
+58/nBBUHh1JbVFjX0n+y1N1xmKOInzlKv1DX4AegJVMy63ZYAKzrhSHXdsCCpHjL
+l98OpHfVCCCL9IxvA0Sd3FY6MLNAyZZhMt5anfkSa5+TrYR7sssRqx9YyULLZWuy
+9y6OaDP0Im+URAq1DjKE51PBqw2oYztPuKlIzXD+QQKBgQDyPKTKinqNapDAt39G
+vaqRxpZl1SRjeZKIHfn85EMqJwTqIef6fxgNmNOBCOMhEfVnpI3VQbM9Fogmm1/n
+5bKjop/RoEg3pWFRHgAQ3VNbau0iNceF15m9S3pvcRpR4v6PGupZvTYPoXYvSVe+
+8dsHeoCpi9mAIZJ06GUlfbiXEQKBgQC6ocnM+72S9fGDDwBU+Mh+PB0V3kVi46ed
+IdzAR9IwI58PjroJlfzyHiWlze9/ygQuCcCj4gwQzmedN3Mu2XpS4oXvpfGNNhP9
+NpLTPgZop/vOxBvabinSG0Siu7nUAlsDIRpEu+3jDIr2svR2GmkDg4XONvCZ2fn2
+UJ24+QyahwKBgQCYfHJkCY4iDW430ostVeHUyEUOr4CrmfES/IPMnUhmdY+Tb2qf
+dngGvyiNNrH7tFleN+kM0MHq948XdoGF8kNk3M9sX1B2rwW20YLLGvgJOSMzgNUr
+vM/LqILXOkSOPa1vGkth2Ej6x/IkzC+PRKJTb9skX6O4E+ok69IYKq8TcQKBgGD7
+gepLRw//TilUuk9tmIJAqryabGQe+RLmbdhdehQZ7qYe/P3OO0t17wpiIXq+d72U
+w85lwO9a0u0Xy3sk+DPqEr+d9A/1ch27JkEvkhUAdhHURsUTShgso1YNR1usfa76
+nLPrFItQEUZxaCeXQcrZpcarNgw9AW/GJK/ie3IxAoGBAJXJhwuJahEKjGqh/vwk
+JSBd+gXV9V1SM7mwFWzLCcKxoqFIHN7DmaJR1xc2nen0n5U7H5HQkmCiR/ISzXxF
+IV366vdCXK+YOyM+lkBI4WWsUa5IDznnVRBzDoiN4bmvU6w+PJqwOQr44yzkXXVS
+WEYVoCR2eAlpbl0vblLKOiUh
+-----END PRIVATE KEY-----""";
+
+    final String clientEmail = "nivi-96@gen-lang-client-0571624677.iam.gserviceaccount.com";
+    final String projectId = "gen-lang-client-0571624677";
+
+    final jwtClaimSet = JsonWebTokenClaims.fromJson({
+      'iss': clientEmail,
+      'sub': clientEmail,
+      'aud': 'https://dialogflow.googleapis.com/',
+      'iat': DateTime.now().millisecondsSinceEpoch ~/ 1000,
+      'exp': (DateTime.now().millisecondsSinceEpoch ~/ 1000) + 3600,
+    });
+
+    final jwk = JsonWebKey.fromPem(privateKey);
+    final builder = JsonWebSignatureBuilder()
+      ..jsonContent = jwtClaimSet.toJson()
+      ..addRecipient(jwk);
+
+    final jws = builder.build();
+    final token = jws.toCompactSerialization();
+
+    final response = await http.post(
+      Uri.parse('https://dialogflow.googleapis.com/v2/projects/$projectId/agent/sessions/123456:detectIntent'),
+      headers: {
+        'Authorization': 'Bearer $token',
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode({
+        'queryInput': {
+          'text': {
+            'text': query,
+            'languageCode': 'en',
+          },
+        },
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      final Map<String, dynamic> jsonResponse = jsonDecode(response.body);
+      final String fulfillmentText = jsonResponse['queryResult']['fulfillmentText'];
+      return fulfillmentText;
+    } else {
+      print('Dialogflow API request failed with status: ${response.statusCode}');
+      return '';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
-        title: const Text(
-          "Ask Nivi",  // The app title reflects the AI's name
-        ),
+        title: Text('NiviBot'),
       ),
-      body: _buildUI(),
-    );
-  }
-
-  Widget _buildUI() {
-    return DashChat(
-      inputOptions: InputOptions(trailing: [
-        IconButton(
-          onPressed: _sendMediaMessage,
-          icon: const Icon(
-            Icons.image,
+      body: Column(
+        children: <Widget>[
+          Flexible(
+            child: ListView.builder(
+              padding: EdgeInsets.all(8.0),
+              reverse: true,
+              itemBuilder: (_, int index) => _buildChatMessage(_messages[index]),
+              itemCount: _messages.length,
+            ),
           ),
-        )
-      ]),
-      currentUser: currentUser,
-      onSend: _sendMessage,
-      messages: messages,
-    );
-  }
-
-  void _sendMessage(ChatMessage chatMessage) {
-    setState(() {
-      messages = [chatMessage, ...messages];
-    });
-    try {
-      String question = chatMessage.text;
-      List<Uint8List>? images;
-      if (chatMessage.medias?.isNotEmpty ?? false) {
-        images = [
-          File(chatMessage.medias!.first.url).readAsBytesSync(),
-        ];
-      }
-      gemini
-          .streamGenerateContent(
-        question,
-        images: images,
-      )
-          .listen((event) {
-        String response = event.content?.parts?.fold(
-                "", (previous, current) => "$previous ${current.text}") ??
-            "";
-
-        ChatMessage? lastMessage = messages.firstOrNull;
-        if (lastMessage != null && lastMessage.user == niviUser) {
-          lastMessage = messages.removeAt(0);
-          lastMessage.text += response;
-          setState(
-            () {
-              messages = [lastMessage!, ...messages];
-            },
-          );
-        } else {
-          ChatMessage message = ChatMessage(
-            user: niviUser,
-            createdAt: DateTime.now(),
-            text: response,
-          );
-          setState(() {
-            messages = [message, ...messages];
-          });
-        }
-      });
-    } catch (e) {
-      print(e);
-    }
-  }
-
-  void _sendMediaMessage() async {
-    ImagePicker picker = ImagePicker();
-    XFile? file = await picker.pickImage(
-      source: ImageSource.gallery,
-    );
-    if (file != null) {
-      ChatMessage chatMessage = ChatMessage(
-        user: currentUser,
-        createdAt: DateTime.now(),
-        text: "Describe this picture?",
-        medias: [
-          ChatMedia(
-            url: file.path,
-            fileName: "",
-            type: MediaType.image,
-          )
+          Divider(height: 1.0),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: <Widget>[
+                Flexible(
+                  child: TextField(
+                    controller: _textController,
+                    decoration: InputDecoration.collapsed(hintText: "Send a message"),
+                  ),
+                ),
+                IconButton(
+                  icon: Icon(Icons.send),
+                  onPressed: () => _handleSubmitted(_textController.text),
+                ),
+              ],
+            ),
+          ),
         ],
-      );
-      _sendMessage(chatMessage);
-    }
+      ),
+    );
+  }
+
+  Widget _buildChatMessage(ChatMessage message) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 10.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            margin: const EdgeInsets.only(right: 16.0),
+            child: CircleAvatar(
+              child: Text(message.isUserMessage ? 'U' : 'B'),
+            ),
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(message.isUserMessage ? 'User' : 'Bot', style: Theme.of(context).textTheme.titleMedium),
+              Container(
+                margin: const EdgeInsets.only(top: 5.0),
+                child: Text(message.text),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }
+
+class ChatMessage {
+  final String text;
+  final bool isUserMessage;
+
+  ChatMessage({required this.text, required this.isUserMessage});
+}
+
+void main() => runApp(MaterialApp(
+      title: 'NiviBot',
+      home: NiviBot(),
+    ));

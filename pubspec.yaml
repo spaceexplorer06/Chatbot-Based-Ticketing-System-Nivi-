@@ -47,12 +47,17 @@ dependencies:
   like_button: ^2.0.5
   dash_chat_2: ^0.0.21
   chat_gpt_sdk: ^3.1.0
+
   carousel_slider:
     git:
       url: https://github.com/sampaio96/flutter_carousel_slider.git
       ref: master
   flutter_gemini: ^2.0.5
   image_picker: ^1.1.2
+  sound_stream: ^0.4.1
+  rxdart: ^0.27.7
+  http: ^0.13.6
+  jose: ^0.3.4
 
 dev_dependencies:
   flutter_test:
@@ -105,6 +110,7 @@ flutter:
     - assets/images/London.jpg
     - assets/Images/Paris.jpg
     - assets/Images/Budapest.jpg
+    - assets/credentials.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

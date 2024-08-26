@@ -100,7 +100,7 @@ class _ViewScreenState extends State<ViewScreen> {
                 ),
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const NiviBot()));
+                      builder: (context) => NiviBot()));
                 },
               ),
               ListTile(
