@@ -1,8 +1,11 @@
 import 'dart:convert';
+import 'package:app/London.dart';
 import 'package:flutter/material.dart';
 import 'package:jose/jose.dart';  
 import 'package:http/http.dart' as http;
 import 'package:uuid/uuid.dart';
+
+import 'Home/Paris.dart';
 
 class NiviBot extends StatefulWidget {
   @override
@@ -84,7 +87,7 @@ WEYVoCR2eAlpbl0vblLKOiUh
     final jwtClaimSet = JsonWebTokenClaims.fromJson({
       'iss': clientEmail,
       'sub': clientEmail,
-      'aud': 'https://dialogflow.googleapis.com/',
+      'aud': 'https://dialogflow.googleapis.com/v2/',
       'iat': DateTime.now().millisecondsSinceEpoch ~/ 1000,
       'exp': (DateTime.now().millisecondsSinceEpoch ~/ 1000) + 3600,
     });
@@ -180,7 +183,10 @@ WEYVoCR2eAlpbl0vblLKOiUh
         Container(
           margin: const EdgeInsets.only(right: 16.0),
           child: CircleAvatar(
-            child: Text(message.isUserMessage ? 'U' : 'N'),
+            backgroundImage: AssetImage(
+              message.isUserMessage ? 'assets/Images/Paris.jpg' : 'assets/Images/London.jpg',
+            ),
+            //child: Text(message.isUserMessage ? 'U' : 'N'),
           ),
         ),
         Expanded(
