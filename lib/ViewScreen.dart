@@ -1,4 +1,3 @@
-
 import 'package:app/Account.dart';
 import 'package:app/Home/Budapest.dart';
 import 'package:app/Home/California.dart';
@@ -95,12 +94,12 @@ class _ViewScreenState extends State<ViewScreen> {
               ListTile(
                 leading: const Icon(Icons.chat),
                 title: const Text(
-                  "Nivi",
+                  "Ask Nivi",
                   style: TextStyle(fontSize: 20),
                 ),
                 onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => NiviBot()));
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) => NiviBot()));
                 },
               ),
               ListTile(
@@ -161,15 +160,21 @@ class _ViewScreenState extends State<ViewScreen> {
                         Container(
                           height: 200,
                           width: 300,
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(50),
-                        image: const DecorationImage(
-                          image: AssetImage('assets/Images/Budapest.jpg'),
-                          fit: BoxFit.fill,
-                        ),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            image: const DecorationImage(
+                              image: AssetImage('assets/Images/Budapest.jpg'),
+                              fit: BoxFit.fill,
+                            ),
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 240, ),
-                            child: Icon(Icons.favorite, color: Colors.red,),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 240,
+                            ),
+                            child: Icon(
+                              Icons.favorite,
+                              color: Colors.red,
+                            ),
                           ),
                         ),
                         Row(
@@ -207,15 +212,21 @@ class _ViewScreenState extends State<ViewScreen> {
                         Container(
                           height: 200,
                           width: 300,
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(50),
-                        image: const DecorationImage(
-                          image: AssetImage('assets/Images/London.jpg'),
-                          fit: BoxFit.fill,
-                        ),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            image: const DecorationImage(
+                              image: AssetImage('assets/Images/London.jpg'),
+                              fit: BoxFit.fill,
+                            ),
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 240, ),
-                            child: Icon(Icons.favorite, color: Colors.red,),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 240,
+                            ),
+                            child: Icon(
+                              Icons.favorite,
+                              color: Colors.red,
+                            ),
                           ),
                         ),
                         Row(
@@ -253,15 +264,21 @@ class _ViewScreenState extends State<ViewScreen> {
                         Container(
                           height: 200,
                           width: 300,
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(50),
-                        image: const DecorationImage(
-                          image: AssetImage('assets/Images/California.jpg'),
-                          fit: BoxFit.fill,
-                        ),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            image: const DecorationImage(
+                              image: AssetImage('assets/Images/California.jpg'),
+                              fit: BoxFit.fill,
+                            ),
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 240, ),
-                            child: Icon(Icons.favorite, color: Colors.red,),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 240,
+                            ),
+                            child: Icon(
+                              Icons.favorite,
+                              color: Colors.red,
+                            ),
                           ),
                         ),
                         Row(
@@ -299,15 +316,21 @@ class _ViewScreenState extends State<ViewScreen> {
                         Container(
                           height: 200,
                           width: 300,
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(50),
-                        image: const DecorationImage(
-                          image: AssetImage('assets/Images/Paris.jpg'),
-                          fit: BoxFit.fill,
-                        ),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            image: const DecorationImage(
+                              image: AssetImage('assets/Images/Paris.jpg'),
+                              fit: BoxFit.fill,
+                            ),
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 240, ),
-                            child: Icon(Icons.favorite, color: Colors.red,),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 240,
+                            ),
+                            child: Icon(
+                              Icons.favorite,
+                              color: Colors.red,
+                            ),
                           ),
                         ),
                         Row(
@@ -353,7 +376,24 @@ class _ViewScreenState extends State<ViewScreen> {
           )
         ],
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute(builder: (context)=> NiviBot() ));
+        },
+        child: Container(
+          decoration: BoxDecoration(
+            shape: BoxShape.circle, // Ensures the FAB is circular
+            image: DecorationImage(
+              image: AssetImage(
+                  'assets/Images/NiVi.png'), // Replace with your image
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        backgroundColor: Colors.transparent,
+      ),
     );
   }
 }
-

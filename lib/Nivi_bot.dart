@@ -136,51 +136,69 @@ WEYVoCR2eAlpbl0vblLKOiUh
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 75),
-        child: Text('Ask Nivi'),
-      )),
-      body: Column(
-        children: <Widget>[
-          Flexible(
-            child: ListView.builder(
-              padding: EdgeInsets.all(8.0),
-              reverse: true,
-              itemBuilder: (_, int index) =>
-                  _buildChatMessage(_messages[index]),
-              itemCount: _messages.length,
+        title: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 75),
+          child: Text('Ask Nivi'),
+        ),
+      ),
+      body: Stack(
+        children: [
+          Positioned.fill(
+            child: Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/Images/NiViBG.png'), // Replace with your image
+                  fit: BoxFit.fill,
+                ),
+              ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: <Widget>[
-                Flexible(
-                  child: Container(
-                    child: TextField(
-                      controller: _textController,
-                      decoration: InputDecoration.collapsed(
-                        
-                          hintText: "Send a message",
-                          border: OutlineInputBorder(
+          Column(
+            children: <Widget>[
+              Flexible(
+                child: ListView.builder(
+                  padding: EdgeInsets.all(8.0),
+                  reverse: true,
+                  itemBuilder: (_, int index) => _buildChatMessage(_messages[index]),
+                  itemCount: _messages.length,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: Container(
+                        margin: const EdgeInsets.only(right: 8.0),
+                        child: TextField(
+                          controller: _textController,
+                          maxLines: null, // Allows TextField to grow vertically
+                          decoration: InputDecoration(
+                            hintText: "Send a message",
+                            border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20),
                               borderSide: const BorderSide(
                                 color: Colors.black,
-                                width: 4,
-                              ))),
-                      onSubmitted: _handleSubmitted,
+                                width: 5,
+                              ),
+                            ),
+                            contentPadding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 12.0),
+                          ),
+                          onSubmitted: _handleSubmitted,
+                        ),
+                      ),
                     ),
-                  ),
+                    IconButton(
+                      icon: Icon(
+                        Icons.send,
+                        color: Colors.blue[500],
+                      ),
+                      onPressed: () => _handleSubmitted(_textController.text),
+                    ),
+                  ],
                 ),
-                IconButton(
-                  icon: Icon(
-                    Icons.send,
-                    color: Colors.blue[500],
-                  ),
-                  onPressed: () => _handleSubmitted(_textController.text),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ],
       ),
@@ -201,7 +219,6 @@ WEYVoCR2eAlpbl0vblLKOiUh
                     ? 'assets/Images/Paris.jpg'
                     : 'assets/Images/NiVi.png',
               ),
-              //child: Text(message.isUserMessage ? 'U' : 'N'),
             ),
           ),
           Expanded(
@@ -216,7 +233,7 @@ WEYVoCR2eAlpbl0vblLKOiUh
                   margin: const EdgeInsets.only(top: 5.0),
                   child: Text(
                     message.text,
-                    overflow: TextOverflow.visible, // Prevents text overflow
+                    overflow: TextOverflow.visible,
                   ),
                 ),
               ],
