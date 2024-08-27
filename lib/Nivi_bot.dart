@@ -87,7 +87,7 @@ WEYVoCR2eAlpbl0vblLKOiUh
     final jwtClaimSet = JsonWebTokenClaims.fromJson({
       'iss': clientEmail,
       'sub': clientEmail,
-      'aud': 'https://dialogflow.googleapis.com/v2/',
+      'aud': 'https://dialogflow.googleapis.com/',
       'iat': DateTime.now().millisecondsSinceEpoch ~/ 1000,
       'exp': (DateTime.now().millisecondsSinceEpoch ~/ 1000) + 3600,
     });
@@ -184,7 +184,7 @@ WEYVoCR2eAlpbl0vblLKOiUh
           margin: const EdgeInsets.only(right: 16.0),
           child: CircleAvatar(
             backgroundImage: AssetImage(
-              message.isUserMessage ? 'assets/Images/Paris.jpg' : 'assets/Images/London.jpg',
+              message.isUserMessage ? 'assets/Images/Paris.jpg' : 'assets/Images/NiVi.png',
             ),
             //child: Text(message.isUserMessage ? 'U' : 'N'),
           ),
