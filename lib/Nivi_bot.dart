@@ -1,11 +1,8 @@
 import 'dart:convert';
-import 'package:app/London.dart';
 import 'package:flutter/material.dart';
-import 'package:jose/jose.dart';  
+import 'package:jose/jose.dart';
 import 'package:http/http.dart' as http;
 import 'package:uuid/uuid.dart';
-
-import 'Home/Paris.dart';
 
 class NiviBot extends StatefulWidget {
   @override
@@ -20,7 +17,7 @@ class _NiviBotState extends State<NiviBot> {
   @override
   void initState() {
     super.initState();
-    _sessionId = Uuid().v4();  // Generate a unique session ID
+    _sessionId = Uuid().v4(); // Generate a unique session ID
   }
 
   Future<void> _handleSubmitted(String text) async {
@@ -81,7 +78,8 @@ IV366vdCXK+YOyM+lkBI4WWsUa5IDznnVRBzDoiN4bmvU6w+PJqwOQr44yzkXXVS
 WEYVoCR2eAlpbl0vblLKOiUh
 -----END PRIVATE KEY-----""";
 
-    final String clientEmail = "nivi-96@gen-lang-client-0571624677.iam.gserviceaccount.com";
+    final String clientEmail =
+        "nivi-96@gen-lang-client-0571624677.iam.gserviceaccount.com";
     final String projectId = "gen-lang-client-0571624677";
 
     final jwtClaimSet = JsonWebTokenClaims.fromJson({
@@ -102,7 +100,8 @@ WEYVoCR2eAlpbl0vblLKOiUh
 
     try {
       final response = await http.post(
-        Uri.parse('https://dialogflow.googleapis.com/v2/projects/$projectId/agent/sessions/$_sessionId:detectIntent'),
+        Uri.parse(
+            'https://dialogflow.googleapis.com/v2/projects/$projectId/agent/sessions/$_sessionId:detectIntent'),
         headers: {
           'Authorization': 'Bearer $token',
           'Content-Type': 'application/json',
@@ -119,10 +118,12 @@ WEYVoCR2eAlpbl0vblLKOiUh
 
       if (response.statusCode == 200) {
         final Map<String, dynamic> jsonResponse = jsonDecode(response.body);
-        final String fulfillmentText = jsonResponse['queryResult']['fulfillmentText'];
+        final String fulfillmentText =
+            jsonResponse['queryResult']['fulfillmentText'];
         return fulfillmentText;
       } else {
-        print('Dialogflow API request failed with status: ${response.statusCode}');
+        print(
+            'Dialogflow API request failed with status: ${response.statusCode}');
         return 'Something went wrong. Please try again later.';
       }
     } catch (e) {
@@ -135,35 +136,47 @@ WEYVoCR2eAlpbl0vblLKOiUh
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 70),
-          child: Text('NiviBot'),
-        )
-      ),
+          title: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 75),
+        child: Text('Ask Nivi'),
+      )),
       body: Column(
         children: <Widget>[
           Flexible(
             child: ListView.builder(
               padding: EdgeInsets.all(8.0),
               reverse: true,
-              itemBuilder: (_, int index) => _buildChatMessage(_messages[index]),
+              itemBuilder: (_, int index) =>
+                  _buildChatMessage(_messages[index]),
               itemCount: _messages.length,
             ),
           ),
-          Divider(height: 1.0),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
               children: <Widget>[
                 Flexible(
-                  child: TextField(
-                    controller: _textController,
-                    decoration: InputDecoration.collapsed(hintText: "Send a message", border: OutlineInputBorder(borderRadius: BorderRadius.circular(20),borderSide: const BorderSide(color : Colors.black,))),
-                    onSubmitted: _handleSubmitted,
+                  child: Container(
+                    child: TextField(
+                      controller: _textController,
+                      decoration: InputDecoration.collapsed(
+                        
+                          hintText: "Send a message",
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: const BorderSide(
+                                color: Colors.black,
+                                width: 4,
+                              ))),
+                      onSubmitted: _handleSubmitted,
+                    ),
                   ),
                 ),
                 IconButton(
-                  icon: Icon(Icons.send),
+                  icon: Icon(
+                    Icons.send,
+                    color: Colors.blue[500],
+                  ),
                   onPressed: () => _handleSubmitted(_textController.text),
                 ),
               ],
@@ -174,44 +187,45 @@ WEYVoCR2eAlpbl0vblLKOiUh
     );
   }
 
- Widget _buildChatMessage(ChatMessage message) {
-  return Container(
-    margin: const EdgeInsets.symmetric(vertical: 10.0),
-    child: Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Container(
-          margin: const EdgeInsets.only(right: 16.0),
-          child: CircleAvatar(
-            backgroundImage: AssetImage(
-              message.isUserMessage ? 'assets/Images/Paris.jpg' : 'assets/Images/NiVi.png',
+  Widget _buildChatMessage(ChatMessage message) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 10.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            margin: const EdgeInsets.only(right: 16.0),
+            child: CircleAvatar(
+              backgroundImage: AssetImage(
+                message.isUserMessage
+                    ? 'assets/Images/Paris.jpg'
+                    : 'assets/Images/NiVi.png',
+              ),
+              //child: Text(message.isUserMessage ? 'U' : 'N'),
             ),
-            //child: Text(message.isUserMessage ? 'U' : 'N'),
           ),
-        ),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                message.isUserMessage ? 'User' : 'Nivi',
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
-              Container(
-                margin: const EdgeInsets.only(top: 5.0),
-                child: Text(
-                  message.text,
-                  overflow: TextOverflow.visible, // Prevents text overflow
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  message.isUserMessage ? 'User' : 'Nivi',
+                  style: Theme.of(context).textTheme.titleMedium,
                 ),
-              ),
-            ],
+                Container(
+                  margin: const EdgeInsets.only(top: 5.0),
+                  child: Text(
+                    message.text,
+                    overflow: TextOverflow.visible, // Prevents text overflow
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
-      ],
-    ),
-  );
-}
-
+        ],
+      ),
+    );
+  }
 }
 
 class ChatMessage {
@@ -220,4 +234,3 @@ class ChatMessage {
 
   ChatMessage({required this.text, required this.isUserMessage});
 }
-
