@@ -49,7 +49,34 @@ class _NiviBotState extends State<NiviBot> {
   }
 
   Future<String> _sendMessageToDialogflow(String query) async {
-    final String privateKey = "";
+    final String privateKey = """-----BEGIN PRIVATE KEY-----
+MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCwmSbSX+lRWn29
+I2e3sctm+aceG0aWfUApME1q6+/BYqGynjZuj1FaLzxuZFSt2NGbvaZR+ebbB8ff
+D3ZR416NDkRWasR+Wc+kvf7yVeUKjjFqQDXaJDrsdcZRUNMaIaVV0SPHPnuHLZGn
+FpykKw93Ti6YKe155yX591lAFcCKRHHGezI9HtIAht7Z7WvGVf9WeduttwjsgFKF
+swJn1IMXP0GNteHszC+SeAjg681iacau7LbAHzReXhkJX2RUysDyrv8SUEwDfR6l
+VBXcknD1quidZhAo48mlFkDG9TLzUaXB75A4Dv3lhrD3pFhCLIemHw6Y9rAIRMUS
+VTT1A+P3AgMBAAECggEABTCbCXe0HaXxKAvQUn+xIJeZp7LZgjawGgXHYKsKYr6J
+TfyEUP95PpNAzWW5b1p93nvWVXZoqGs0HoQP0BxEfRS8QWXl3Gi7R3Yl9e08S/Ed
+1qeIbZ6+9JAJgf5EFfKDL2B0ErjtXG2kaCqr888oJzNu/x3MUtbOMOhqAQ4imG2Z
+58/nBBUHh1JbVFjX0n+y1N1xmKOInzlKv1DX4AegJVMy63ZYAKzrhSHXdsCCpHjL
+l98OpHfVCCCL9IxvA0Sd3FY6MLNAyZZhMt5anfkSa5+TrYR7sssRqx9YyULLZWuy
+9y6OaDP0Im+URAq1DjKE51PBqw2oYztPuKlIzXD+QQKBgQDyPKTKinqNapDAt39G
+vaqRxpZl1SRjeZKIHfn85EMqJwTqIef6fxgNmNOBCOMhEfVnpI3VQbM9Fogmm1/n
+5bKjop/RoEg3pWFRHgAQ3VNbau0iNceF15m9S3pvcRpR4v6PGupZvTYPoXYvSVe+
+8dsHeoCpi9mAIZJ06GUlfbiXEQKBgQC6ocnM+72S9fGDDwBU+Mh+PB0V3kVi46ed
+IdzAR9IwI58PjroJlfzyHiWlze9/ygQuCcCj4gwQzmedN3Mu2XpS4oXvpfGNNhP9
+NpLTPgZop/vOxBvabinSG0Siu7nUAlsDIRpEu+3jDIr2svR2GmkDg4XONvCZ2fn2
+UJ24+QyahwKBgQCYfHJkCY4iDW430ostVeHUyEUOr4CrmfES/IPMnUhmdY+Tb2qf
+dngGvyiNNrH7tFleN+kM0MHq948XdoGF8kNk3M9sX1B2rwW20YLLGvgJOSMzgNUr
+vM/LqILXOkSOPa1vGkth2Ej6x/IkzC+PRKJTb9skX6O4E+ok69IYKq8TcQKBgGD7
+gepLRw//TilUuk9tmIJAqryabGQe+RLmbdhdehQZ7qYe/P3OO0t17wpiIXq+d72U
+w85lwO9a0u0Xy3sk+DPqEr+d9A/1ch27JkEvkhUAdhHURsUTShgso1YNR1usfa76
+nLPrFItQEUZxaCeXQcrZpcarNgw9AW/GJK/ie3IxAoGBAJXJhwuJahEKjGqh/vwk
+JSBd+gXV9V1SM7mwFWzLCcKxoqFIHN7DmaJR1xc2nen0n5U7H5HQkmCiR/ISzXxF
+IV366vdCXK+YOyM+lkBI4WWsUa5IDznnVRBzDoiN4bmvU6w+PJqwOQr44yzkXXVS
+WEYVoCR2eAlpbl0vblLKOiUh
+-----END PRIVATE KEY-----""";
 
     final String clientEmail =
         "nivi-96@gen-lang-client-0571624677.iam.gserviceaccount.com";
