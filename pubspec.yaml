@@ -59,6 +59,7 @@ dependencies:
   http: ^0.13.6
   jose: ^0.3.4
   uuid: ^4.4.2
+  bubble: ^1.2.1
 
 dev_dependencies:
   flutter_test:
@@ -111,7 +112,6 @@ flutter:
     - assets/images/London.jpg
     - assets/Images/Paris.jpg
     - assets/Images/Budapest.jpg
-    - assets/credentials.json
     - assets/Images/NiVi.png
     - assets/Images/NiViBG.png
 
