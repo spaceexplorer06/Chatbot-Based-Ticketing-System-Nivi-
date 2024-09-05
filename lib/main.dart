@@ -12,7 +12,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:app/Home.dart';
 import 'dart:developer' as devtools show log;
 import 'package:app/Settings_app.dart';
-
 void main() {
   Gemini.init(
     apiKey: GEMINI_API_KEY,

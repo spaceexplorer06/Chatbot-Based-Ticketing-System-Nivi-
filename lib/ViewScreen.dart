@@ -167,8 +167,8 @@ class _ViewScreenState extends State<ViewScreen> {
                               fit: BoxFit.fill,
                             ),
                           ),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
+                          child: const Padding(
+                            padding: EdgeInsets.symmetric(
                               horizontal: 240,
                             ),
                             child: Icon(
@@ -188,13 +188,14 @@ class _ViewScreenState extends State<ViewScreen> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 30),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 30),
                               child: IconButton(
                                 onPressed: () {
                                   Navigator.of(context).push(MaterialPageRoute(
                                       builder: (route) => const Budapest()));
                                 },
-                                icon: Icon(
+                                icon: const Icon(
                                   LineAwesomeIcons.angle_right_solid,
                                   color: Colors.black,
                                 ),
@@ -219,8 +220,8 @@ class _ViewScreenState extends State<ViewScreen> {
                               fit: BoxFit.fill,
                             ),
                           ),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
+                          child: const Padding(
+                            padding: EdgeInsets.symmetric(
                               horizontal: 240,
                             ),
                             child: Icon(
@@ -240,13 +241,14 @@ class _ViewScreenState extends State<ViewScreen> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 60),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 60),
                               child: IconButton(
                                 onPressed: () {
                                   Navigator.of(context).push(MaterialPageRoute(
                                       builder: (route) => const London()));
                                 },
-                                icon: Icon(
+                                icon: const Icon(
                                   LineAwesomeIcons.angle_right_solid,
                                   color: Colors.black,
                                 ),
@@ -271,8 +273,8 @@ class _ViewScreenState extends State<ViewScreen> {
                               fit: BoxFit.fill,
                             ),
                           ),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
+                          child: const Padding(
+                            padding: EdgeInsets.symmetric(
                               horizontal: 240,
                             ),
                             child: Icon(
@@ -292,13 +294,14 @@ class _ViewScreenState extends State<ViewScreen> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 50),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 50),
                               child: IconButton(
                                 onPressed: () {
                                   Navigator.of(context).push(MaterialPageRoute(
                                       builder: (route) => const California()));
                                 },
-                                icon: Icon(
+                                icon: const Icon(
                                   LineAwesomeIcons.angle_right_solid,
                                   color: Colors.black,
                                 ),
@@ -323,8 +326,8 @@ class _ViewScreenState extends State<ViewScreen> {
                               fit: BoxFit.fill,
                             ),
                           ),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
+                          child: const Padding(
+                            padding: EdgeInsets.symmetric(
                               horizontal: 240,
                             ),
                             child: Icon(
@@ -344,13 +347,14 @@ class _ViewScreenState extends State<ViewScreen> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 30),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 30),
                               child: IconButton(
                                 onPressed: () {
                                   Navigator.of(context).push(MaterialPageRoute(
                                       builder: (route) => const Paris()));
                                 },
-                                icon: Icon(
+                                icon: const Icon(
                                   LineAwesomeIcons.angle_right_solid,
                                   color: Colors.black,
                                 ),
@@ -366,11 +370,11 @@ class _ViewScreenState extends State<ViewScreen> {
                   height: 300,
                   enlargeCenterPage: true,
                   autoPlay: true,
-                  autoPlayInterval: Duration(seconds: 3),
+                  autoPlayInterval: const Duration(seconds: 3),
                   aspectRatio: 16 / 9,
                   autoPlayCurve: Curves.fastOutSlowIn,
                   enableInfiniteScroll: true,
-                  autoPlayAnimationDuration: Duration(milliseconds: 600),
+                  autoPlayAnimationDuration: const Duration(milliseconds: 600),
                   viewportFraction: 0.8,
                 )),
           )
@@ -380,7 +384,8 @@ class _ViewScreenState extends State<ViewScreen> {
       floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.of(context).push(MaterialPageRoute(builder: (context)=> NiviBot() ));
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => NiviBot()));
         },
         child: Container(
           decoration: BoxDecoration(

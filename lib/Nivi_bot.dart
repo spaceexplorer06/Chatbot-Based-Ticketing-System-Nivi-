@@ -22,8 +22,7 @@ class _NiviBotState extends State<NiviBot> {
   ChatUser geminiUser = ChatUser(
     id: "1",
     firstName: "Nivi",
-    profileImage:
-        "assets/Images/NiVi.png",
+    profileImage: "assets/Images/NiVi.png",
   );
   @override
   Widget build(BuildContext context) {
@@ -37,21 +36,24 @@ class _NiviBotState extends State<NiviBot> {
       body: _buildUI(),
     );
   }
-  
+
   Widget _buildUI() {
-    return DashChat(
-      inputOptions: InputOptions(trailing: [
-        IconButton(
-          onPressed: _sendMediaMessage,
-          icon: const Icon(
-            Icons.image,
-          ),
-        )
-      ]),
-      currentUser: currentUser,
-      onSend: _sendMessage,
-      messages: messages,
-    );
+    return Container(
+        decoration: const BoxDecoration(
+            image: DecorationImage(image: AssetImage("assets/Images/NiViBG.png",),fit: BoxFit.cover)),
+        child: DashChat(
+          inputOptions: InputOptions(trailing: [
+            IconButton(
+              onPressed: _sendMediaMessage,
+              icon: const Icon(
+                Icons.image,
+              ),
+            )
+          ]),
+          currentUser: currentUser,
+          onSend: _sendMessage,
+          messages: messages,
+        ));
   }
 
   void _sendMessage(ChatMessage chatMessage) {
@@ -66,10 +68,11 @@ class _NiviBotState extends State<NiviBot> {
           File(chatMessage.medias!.first.url).readAsBytesSync(),
         ];
       }
-       String prompt = "Nivi is a friendly and knowledgeable assistant who specializes in technology and programming. "
-    "The name of the AI is Nivi. When asked about anything other than programming, reply that you don't understand.Nivi does not engage in casual conversation or off-topic discussions."
-    
-    "User: $question";
+      String prompt =
+          "Nivi is a friendly and knowledgeable assistant who specializes in technology and programming. "
+          "The name of the AI is Nivi. When asked about anything other than programming, reply that you don't understand.Nivi does not engage in casual conversation or off-topic discussions."
+          "Nivi means Nivitri in Sanskrit"
+          "User: $question";
       gemini
           .streamGenerateContent(
         prompt,
