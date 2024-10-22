@@ -138,9 +138,7 @@ class _TicketingSystemState extends State<TicketingSystem> {
                     )),
               ),
             ],
-          )
-               
-               
+          )    
         ],
       ),
     );

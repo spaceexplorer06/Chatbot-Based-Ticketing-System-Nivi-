@@ -4,7 +4,7 @@ import 'package:app/Payment/razorpay.dart';
 import 'package:app/Profile.dart';
 import 'package:app/Profile/EditProfile.dart';
 import 'package:app/ViewScreen.dart';
-import 'package:app/Viewscreen/EventCalender.dart';
+import 'package:app/Viewscreen/CalenderPage.dart';
 import 'package:app/Viewscreen/TicketingSystem.dart';
 import 'package:app/Viewscreen/TripPlanning.dart';
 import 'package:app/Viewscreen/YourPlans.dart';
@@ -46,7 +46,7 @@ void main() {
         '/ticket/': (context) => const TicketingSystem(),
         '/trip/': (context) => const TripPlanning(),
         '/plans/': (context) => const YourPlans(),
-        '/event/': (context) => const EventCalender(),
+        '/calender/': (context) => CalendarPage(),
       },
     ),
   );

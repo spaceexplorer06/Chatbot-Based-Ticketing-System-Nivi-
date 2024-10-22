@@ -8,7 +8,7 @@ import 'package:app/Home/Paris.dart';
 import 'package:app/Nivi_bot.dart';
 import 'package:app/Profile.dart';
 import 'package:app/Settings_app.dart';
-import 'package:app/Viewscreen/EventCalender.dart';
+import 'package:app/Viewscreen/CalenderPage.dart';
 import 'package:app/Viewscreen/TicketingSystem.dart';
 import 'package:app/Viewscreen/TripPlanning.dart';
 import 'package:app/Viewscreen/YourPlans.dart';
@@ -525,7 +525,7 @@ class _ViewScreenState extends State<ViewScreen> {
                     ),
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (route) => const EventCalender()));
+                          builder: (route) => CalendarPage()));
                     },
                     child: const Row(
                       children: [
