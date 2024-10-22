@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class YourPlans extends StatefulWidget {
   const YourPlans({super.key});
@@ -10,6 +11,13 @@ class YourPlans extends StatefulWidget {
 class _YourPlansState extends State<YourPlans> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 25),
+          child: Text("Your Plans"),
+        ),
+      )
+    );
   }
 }

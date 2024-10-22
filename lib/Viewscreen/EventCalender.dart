@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class EventCalender extends StatefulWidget {
   const EventCalender({super.key});
@@ -10,6 +11,13 @@ class EventCalender extends StatefulWidget {
 class _EventCalenderState extends State<EventCalender> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 25),
+          child: Text("Event Calender"),
+        ),
+      )
+    );
   }
 }

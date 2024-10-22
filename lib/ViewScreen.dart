@@ -8,6 +8,10 @@ import 'package:app/Home/Paris.dart';
 import 'package:app/Nivi_bot.dart';
 import 'package:app/Profile.dart';
 import 'package:app/Settings_app.dart';
+import 'package:app/Viewscreen/EventCalender.dart';
+import 'package:app/Viewscreen/TicketingSystem.dart';
+import 'package:app/Viewscreen/TripPlanning.dart';
+import 'package:app/Viewscreen/YourPlans.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart' hide CarouselController;
@@ -399,7 +403,10 @@ class _ViewScreenState extends State<ViewScreen> {
                         const Color.fromARGB(255, 77, 218, 206),
                       ),
                     ),
-                    onPressed: null,
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (route) => const TicketingSystem()));
+                    },
                     child: const Row(
                       children: [
                         Icon(
@@ -408,7 +415,10 @@ class _ViewScreenState extends State<ViewScreen> {
                         ),
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 10),
-                          child: Text("Ticketing System", style: TextStyle(color: Colors.black),),
+                          child: Text(
+                            "Ticketing System",
+                            style: TextStyle(color: Colors.black),
+                          ),
                         ),
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 14),
@@ -419,8 +429,7 @@ class _ViewScreenState extends State<ViewScreen> {
                           ),
                         )
                       ],
-                    )
-                    ),
+                    )),
               ),
             ),
             Padding(
@@ -434,7 +443,10 @@ class _ViewScreenState extends State<ViewScreen> {
                         const Color.fromARGB(255, 77, 218, 206),
                       ),
                     ),
-                    onPressed: null,
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (route) => const TripPlanning()));
+                    },
                     child: const Row(
                       children: [
                         Icon(
@@ -466,13 +478,16 @@ class _ViewScreenState extends State<ViewScreen> {
                 width: 300, // Desired width
                 height: 50, // Desired height
                 child: ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor: ButtonStyleButton.allOrNull(
-                      const Color.fromARGB(255, 77, 218, 206),
+                    style: ButtonStyle(
+                      backgroundColor: ButtonStyleButton.allOrNull(
+                        const Color.fromARGB(255, 77, 218, 206),
+                      ),
                     ),
-                  ),
-                  onPressed: null,
-                  child: const Row(
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (route) => const YourPlans()));
+                    },
+                    child: const Row(
                       children: [
                         Icon(
                           Icons.book,
@@ -480,7 +495,10 @@ class _ViewScreenState extends State<ViewScreen> {
                         ),
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 10),
-                          child: Text(" Your Plans", style: TextStyle(color: Colors.black),),
+                          child: Text(
+                            " Your Plans",
+                            style: TextStyle(color: Colors.black),
+                          ),
                         ),
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 48),
@@ -491,8 +509,7 @@ class _ViewScreenState extends State<ViewScreen> {
                           ),
                         )
                       ],
-                    )
-                ),
+                    )),
               ),
             ),
             Padding(
@@ -501,13 +518,16 @@ class _ViewScreenState extends State<ViewScreen> {
                 width: 300, // Desired width
                 height: 50, // Desired height
                 child: ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor: ButtonStyleButton.allOrNull(
-                      const Color.fromARGB(255, 77, 218, 206),
+                    style: ButtonStyle(
+                      backgroundColor: ButtonStyleButton.allOrNull(
+                        const Color.fromARGB(255, 77, 218, 206),
+                      ),
                     ),
-                  ),
-                  onPressed: null,
-                  child:const Row(
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (route) => const EventCalender()));
+                    },
+                    child: const Row(
                       children: [
                         Icon(
                           Icons.calendar_month,
@@ -515,10 +535,13 @@ class _ViewScreenState extends State<ViewScreen> {
                         ),
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 10),
-                          child: Text("Event Calender", style: TextStyle(color: Colors.black),),
+                          child: Text(
+                            "Event Calender",
+                            style: TextStyle(color: Colors.black),
+                          ),
                         ),
                         Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 25 ),
+                          padding: EdgeInsets.symmetric(horizontal: 25),
                           child: Icon(
                             Icons.arrow_right_alt_rounded,
                             size: 40,
@@ -526,8 +549,7 @@ class _ViewScreenState extends State<ViewScreen> {
                           ),
                         )
                       ],
-                    )
-                ),
+                    )),
               ),
             ),
           ],

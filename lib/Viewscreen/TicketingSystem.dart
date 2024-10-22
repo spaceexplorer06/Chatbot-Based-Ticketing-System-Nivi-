@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class TicketingSystem extends StatefulWidget {
   const TicketingSystem({super.key});
@@ -10,6 +11,13 @@ class TicketingSystem extends StatefulWidget {
 class _TicketingSystemState extends State<TicketingSystem> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 25),
+          child: Text("Ticketing System"),
+        ),
+      )
+    );
   }
 }
