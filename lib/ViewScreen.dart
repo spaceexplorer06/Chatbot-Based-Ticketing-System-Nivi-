@@ -390,7 +390,8 @@ class _ViewScreenState extends State<ViewScreen> {
                     autoPlayAnimationDuration:
                         const Duration(milliseconds: 600),
                     viewportFraction: 0.8,
-                  )),
+                  )
+                  ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
