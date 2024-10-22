@@ -39,99 +39,99 @@ class _ViewScreenState extends State<ViewScreen> {
         ],
         backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       ),
-      drawer: Drawer(
-        child: Container(
-          color: const Color.fromARGB(255, 210, 255, 211),
-          child: ListView(
-            children: [
-              DrawerHeader(
-                child: Column(
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const Profile()));
-                      },
-                      icon: const Icon(
-                        Icons.person,
-                        size: 70,
-                        color: Colors.black,
+        drawer: Drawer(
+          child: Container(
+            color: const Color.fromARGB(255, 210, 255, 211),
+            child: ListView(
+              children: [
+                DrawerHeader(
+                  child: Column(
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const Profile()));
+                        },
+                        icon: const Icon(
+                          Icons.person,
+                          size: 70,
+                          color: Colors.black,
+                        ),
                       ),
-                    ),
-                    Text(currentUser.email!),
-                  ],
+                      Text(currentUser.email!),
+                    ],
+                  ),
                 ),
-              ),
-              const ListTile(
-                leading: Icon(Icons.home),
-                title: Text(
-                  "Home Page",
-                  style: TextStyle(fontSize: 20),
+                const ListTile(
+                  leading: Icon(Icons.home),
+                  title: Text(
+                    "Home Page",
+                    style: TextStyle(fontSize: 20),
+                  ),
                 ),
-              ),
-              ListTile(
-                leading: Icon(Icons.favorite),
-                title: const Text(
-                  "Favourites",
-                  style: TextStyle(fontSize: 20),
+                ListTile(
+                  leading: Icon(Icons.favorite),
+                  title: const Text(
+                    "Favourites",
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  onTap: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (route) => const Favourite()));
+                  },
                 ),
-                onTap: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (route) => const Favourite()));
-                },
-              ),
-              ListTile(
-                leading: const Icon(Icons.people),
-                title: const Text(
-                  "Account",
-                  style: TextStyle(fontSize: 20),
+                ListTile(
+                  leading: const Icon(Icons.people),
+                  title: const Text(
+                    "Account",
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  onTap: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => const Account()));
+                  },
                 ),
-                onTap: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => const Account()));
-                },
-              ),
-              ListTile(
-                leading: const Icon(Icons.chat),
-                title: const Text(
-                  "Ask Nivi",
-                  style: TextStyle(fontSize: 20),
-                ),
-                onTap: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) => NiviBot()));
-                },
-              ),
-              ListTile(
-                leading: const Icon(Icons.settings),
-                title: const Text(
-                  "Settings",
-                  style: TextStyle(fontSize: 20),
-                ),
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const SettingsApp()));
-                },
-              ),
-              ListTile(
-                leading: const Icon(Icons.logout),
-                title: const Text(
-                  "Logout",
-                  style: TextStyle(fontSize: 20),
-                ),
-                onTap: () async {
-                  final shouldLogout = await showlogoutDialog(context);
-                  if (shouldLogout) {
-                    await FirebaseAuth.instance.signOut();
+                ListTile(
+                  leading: const Icon(Icons.chat),
+                  title: const Text(
+                    "Ask Nivi",
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  onTap: () {
                     Navigator.of(context)
-                        .pushNamedAndRemoveUntil('/login/', (_) => false);
-                  }
-                },
-              ),
-            ],
+                        .push(MaterialPageRoute(builder: (context) => NiviBot()));
+                  },
+                ),
+                ListTile(
+                  leading: const Icon(Icons.settings),
+                  title: const Text(
+                    "Settings",
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const SettingsApp()));
+                  },
+                ),
+                ListTile(
+                  leading: const Icon(Icons.logout),
+                  title: const Text(
+                    "Logout",
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  onTap: () async {
+                    final shouldLogout = await showlogoutDialog(context);
+                    if (shouldLogout) {
+                      await FirebaseAuth.instance.signOut();
+                      Navigator.of(context)
+                          .pushNamedAndRemoveUntil('/login/', (_) => false);
+                    }
+                  },
+                ),
+              ],
+            ),
           ),
         ),
-      ),
       body: Column(
         children: [
           const Text(

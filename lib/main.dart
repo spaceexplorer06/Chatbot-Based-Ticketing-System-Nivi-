@@ -501,16 +501,16 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ],
                                 ),
                               ),
-                              const Padding(
-                                padding: EdgeInsets.symmetric(
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
                                     vertical: 10, horizontal: 50),
                                 child: Expanded(
                                   child: Row(
                                     children: [
                                       Padding(
-                                        padding: EdgeInsets.all(8.0),
+                                        padding: const EdgeInsets.all(8.0),
                                         child: ElevatedButton(
-                                            style: ButtonStyle(
+                                            style: const ButtonStyle(
                                               backgroundColor:
                                                   WidgetStatePropertyAll(
                                                       Color.fromARGB(
@@ -521,8 +521,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                                 ),
                                               ),
                                             ),
-                                            onPressed: null,
-                                            child: Padding(
+                                            
+                                            key: null,
+                                            onPressed: () {  },
+                                            child: const Padding(
                                               padding: EdgeInsets.all(8.0),
                                               child: Icon(
                                                 Icons.g_mobiledata,
@@ -531,7 +533,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                               ),
                                             )),
                                       ),
-                                      ElevatedButton(
+                                      const ElevatedButton(
                                           style: ButtonStyle(
                                             backgroundColor:
                                                 WidgetStatePropertyAll(
