@@ -4,6 +4,10 @@ import 'package:app/Payment/razorpay.dart';
 import 'package:app/Profile.dart';
 import 'package:app/Profile/EditProfile.dart';
 import 'package:app/ViewScreen.dart';
+import 'package:app/Viewscreen/Event_calender.dart';
+import 'package:app/Viewscreen/Ticketing_system.dart';
+import 'package:app/Viewscreen/Trip_planning.dart';
+import 'package:app/Viewscreen/Your_plans.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -38,7 +42,11 @@ void main() {
         '/account/': (context) => const Account(),
         '/setting/': (context) => const SettingsApp(),
         '/profile/': (context) => const Profile(),
-        'edit': (context) => const Editprofile(),
+        '/edit/': (context) => const Editprofile(),
+        '/ticket/': (context) => const TicketingSystem(),
+        '/trip/': (context) => const TripPlanning(),
+        '/plans/': (context) => const YourPlans(),
+        '/event/': (context) => const EventCalender(),
       },
     ),
   );
