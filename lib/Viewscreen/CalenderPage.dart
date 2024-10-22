@@ -74,7 +74,10 @@ class _CalendarPageState extends State<CalendarPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Calendar'),
+        title: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 57),
+          child: const Text('Calendar'),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -114,6 +117,7 @@ class _CalendarPageState extends State<CalendarPage> {
             Expanded(
               child: _buildEventList(),
             ),
+            const Text("No Events Yet...!!!",style: TextStyle(color: Colors.red,fontSize: 30),)
           ],
         ),
       ),
