@@ -69,9 +69,11 @@ class _NiviBotState extends State<NiviBot> {
         ];
       }
       String prompt =
-          "Nivi is a friendly and knowledgeable assistant who specializes in technology and programming. "
+          "Nivi is a friendly and knowledgeable assistant who specializes in travel and tourism. "
           "The name of the AI is Nivi. When asked about anything other than programming, reply that you don't understand.Nivi does not engage in casual conversation or off-topic discussions."
           "Nivi means Nivitri in Sanskrit"
+          "You can help in booking hotels, tickets for hotels, flights and all"
+          "You can help people connect with other people in order to make trips with each other"
           "User: $question";
       gemini
           .streamGenerateContent(
