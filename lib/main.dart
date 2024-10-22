@@ -1,6 +1,7 @@
 import 'package:app/API.dart';
 import 'package:app/Account.dart';
 import 'package:app/Profile.dart';
+import 'package:app/Profile/EditProfile.dart';
 import 'package:app/ViewScreen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +27,7 @@ void main() {
             seedColor: const Color.fromARGB(255, 255, 210, 210)),
         useMaterial3: true,
       ),
-      home: const Home(),
+      home: const Editprofile(),
       routes: {
         '/home/': (context) => const Home(),
         '/view/': (context) => const ViewScreen(),
