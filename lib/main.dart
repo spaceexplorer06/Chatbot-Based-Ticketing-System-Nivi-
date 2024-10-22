@@ -37,6 +37,7 @@ void main() {
         '/account/': (context) => const Account(),
         '/setting/': (context) => const SettingsApp(),
         '/profile/': (context) => const Profile(),
+        'edit':(context)=> const Editprofile(),
       },
     ),
   );

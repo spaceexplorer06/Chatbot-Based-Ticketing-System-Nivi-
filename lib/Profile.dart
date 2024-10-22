@@ -49,6 +49,11 @@ class _ProfileState extends State<Profile> {
                 ),
               ),
             ),
+          ),
+          SizedBox(
+            child: ElevatedButton(onPressed: (){
+              Navigator.of(context).pushNamedAndRemoveUntil('edit', (route) => false);
+            }, child: const Text("Edit Profile")),
           )
         ],
       ),
