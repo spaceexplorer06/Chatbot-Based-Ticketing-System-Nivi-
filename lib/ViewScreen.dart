@@ -394,14 +394,33 @@ class _ViewScreenState extends State<ViewScreen> {
                 width: 300, // Desired width
                 height: 50, // Desired height
                 child: ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor: ButtonStyleButton.allOrNull(
-                      const Color.fromARGB(255, 77, 218, 206),
+                    style: ButtonStyle(
+                      backgroundColor: ButtonStyleButton.allOrNull(
+                        const Color.fromARGB(255, 77, 218, 206),
+                      ),
                     ),
-                  ),
-                  onPressed: null,
-                  child: const Text("Ticketing System"),
-                ),
+                    onPressed: null,
+                    child: const Row(
+                      children: [
+                        Icon(
+                          Icons.airplane_ticket_sharp,
+                          color: Colors.black,
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10),
+                          child: Text("Ticketing System", style: TextStyle(color: Colors.black),),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 14),
+                          child: Icon(
+                            Icons.arrow_right_alt_rounded,
+                            size: 40,
+                            color: Colors.black,
+                          ),
+                        )
+                      ],
+                    )
+                    ),
               ),
             ),
             Padding(
@@ -410,14 +429,35 @@ class _ViewScreenState extends State<ViewScreen> {
                 width: 300, // Desired width
                 height: 50, // Desired height
                 child: ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor: ButtonStyleButton.allOrNull(
-                      const Color.fromARGB(255, 77, 218, 206),
+                    style: ButtonStyle(
+                      backgroundColor: ButtonStyleButton.allOrNull(
+                        const Color.fromARGB(255, 77, 218, 206),
+                      ),
                     ),
-                  ),
-                  onPressed: null,
-                  child: const Text("Trip Planning"),
-                ),
+                    onPressed: null,
+                    child: const Row(
+                      children: [
+                        Icon(
+                          Icons.beach_access,
+                          color: Colors.black,
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10),
+                          child: Text(
+                            "Trip Planning",
+                            style: TextStyle(color: Colors.black),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 40),
+                          child: Icon(
+                            Icons.arrow_right_alt_rounded,
+                            size: 40,
+                            color: Colors.black,
+                          ),
+                        )
+                      ],
+                    )),
               ),
             ),
             Padding(
@@ -432,7 +472,26 @@ class _ViewScreenState extends State<ViewScreen> {
                     ),
                   ),
                   onPressed: null,
-                  child: const Text("Your Plans"),
+                  child: const Row(
+                      children: [
+                        Icon(
+                          Icons.book,
+                          color: Colors.black,
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10),
+                          child: Text(" Your Plans", style: TextStyle(color: Colors.black),),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 48),
+                          child: Icon(
+                            Icons.arrow_right_alt_rounded,
+                            size: 40,
+                            color: Colors.black,
+                          ),
+                        )
+                      ],
+                    )
                 ),
               ),
             ),
@@ -448,7 +507,26 @@ class _ViewScreenState extends State<ViewScreen> {
                     ),
                   ),
                   onPressed: null,
-                  child: const Text("Event Calender"),
+                  child:const Row(
+                      children: [
+                        Icon(
+                          Icons.calendar_month,
+                          color: Colors.black,
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10),
+                          child: Text("Event Calender", style: TextStyle(color: Colors.black),),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 25 ),
+                          child: Icon(
+                            Icons.arrow_right_alt_rounded,
+                            size: 40,
+                            color: Colors.black,
+                          ),
+                        )
+                      ],
+                    )
                 ),
               ),
             ),

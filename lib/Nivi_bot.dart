@@ -80,7 +80,7 @@ class _NiviBotState extends State<NiviBot> {
         prompt,
         images: images,
       )
-          .listen((event) {
+        .listen((event) {
         ChatMessage? lastMessage = messages.firstOrNull;
         if (lastMessage != null && lastMessage.user == geminiUser) {
           lastMessage = messages.removeAt(0);
