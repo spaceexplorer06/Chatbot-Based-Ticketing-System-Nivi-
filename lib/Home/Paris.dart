@@ -1,4 +1,5 @@
 import 'package:app/Chat.dart';
+import 'package:app/Viewscreen/TicketingSystem.dart';
 import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
@@ -71,7 +72,8 @@ class _ParisState extends State<Paris> {
               padding: EdgeInsets.symmetric(vertical: 10),
               child: Text(
                 "Visits this month : 4.5K",
-                style: TextStyle(fontSize: 25, color: Colors.blue, fontFamily: 'belanosima'),
+                style: TextStyle(
+                    fontSize: 25, color: Colors.blue, fontFamily: 'belanosima'),
               ),
             ),
             const Row(
@@ -162,8 +164,11 @@ class _ParisState extends State<Paris> {
                   autoPlayAnimationDuration: const Duration(milliseconds: 750),
                   viewportFraction: 0.8,
                 )),
-            const ElevatedButton(
-                onPressed: null,
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (route) => const TicketingSystem()));
+                },
                 child: Text(
                   "Up for a visit ?",
                   style: TextStyle(color: Colors.black),

@@ -1,4 +1,5 @@
 import 'package:app/Chat.dart';
+import 'package:app/Viewscreen/TicketingSystem.dart';
 import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
@@ -157,13 +158,15 @@ class _BudapestState extends State<Budapest> {
                   autoPlayAnimationDuration: const Duration(milliseconds: 750),
                   viewportFraction: 0.8,
                 )),
-            const ElevatedButton(
-                onPressed: null,
-                child: Text(
+            ElevatedButton(
+                onPressed: (){
+                  Navigator.of(context).push(MaterialPageRoute(builder: (route)=> const TicketingSystem()));
+                },
+                child: const Text(
                   "Up for a visit ?",
                   style: TextStyle(color: Colors.black),
                 ),
-                style: ButtonStyle(
+                style: const ButtonStyle(
                     backgroundColor: WidgetStatePropertyAll(
                         Color.fromARGB(252, 255, 122, 50)))),
           ],

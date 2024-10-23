@@ -45,7 +45,7 @@ void main() {
         '/ticket/': (context) => const TicketingSystem(),
         '/trip/': (context) => const TripPlanning(),
         '/plans/': (context) => const YourPlans(),
-        '/calender/': (context) => CalendarPage(),
+        '/calender/': (context) => const CalendarPage(),
       },
     ),
   );

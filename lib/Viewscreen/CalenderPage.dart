@@ -1,28 +1,110 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:table_calendar/table_calendar.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Calendar App with Firebase',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const CalendarPage(),
+    );
+  }
+}
 
 class CalendarPage extends StatefulWidget {
   const CalendarPage({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
   _CalendarPageState createState() => _CalendarPageState();
 }
 
 class _CalendarPageState extends State<CalendarPage> {
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   DateTime _focusedDay = DateTime.now();
   DateTime? _selectedDay;
-  Map<DateTime, List<String>> events = {};
+  Map<DateTime, List<Map<String, dynamic>>> events = {};
 
-  void _addEvent(String event) {
+  @override
+  void initState() {
+    super.initState();
+    _listenToFirestoreChanges();
+  }
+
+  // Use a Firestore stream listener to get real-time updates
+  void _listenToFirestoreChanges() {
+    _firestore.collection('reminders').snapshots().listen((snapshot) {
+      Map<DateTime, List<Map<String, dynamic>>> newEvents = {};
+
+      for (var doc in snapshot.docs) {
+        final data = doc.data();
+        DateTime date = DateTime.parse(data['date']);
+        String event = data['event'];
+
+        if (newEvents[date] != null) {
+          newEvents[date]!.add({'id': doc.id, 'event': event});
+        } else {
+          newEvents[date] = [{'id': doc.id, 'event': event}];
+        }
+      }
+
+      // Update the UI
+      setState(() {
+        events = newEvents;
+      });
+    });
+  }
+
+  Future<void> _addEvent(String event) async {
     if (_selectedDay == null) return;
+
+    try {
+      // Save event to Firestore
+      await _firestore.collection('reminders').add({
+        'date': _selectedDay!.toIso8601String(),
+        'event': event,
+      });
+    } catch (e) {
+      print('Error adding event to Firestore: $e');
+    }
+  }
+
+  Future<void> _deleteEvent(String docId, DateTime date, Map<String, dynamic> event) async {
+    // Optimistically remove the event from the UI state first
     setState(() {
-      if (events[_selectedDay] != null) {
-        events[_selectedDay]!.add(event);
-      } else {
-        events[_selectedDay!] = [event];
+      events[date]?.remove(event);
+      if (events[date]?.isEmpty ?? true) {
+        events.remove(date);
       }
     });
+
+    // Now attempt to delete the event from Firestore
+    try {
+      await _firestore.collection('reminders').doc(docId).delete();
+      print('Event deleted from Firestore');
+    } catch (e) {
+      // If the delete fails, re-add the event to the UI
+      setState(() {
+        if (events[date] != null) {
+          events[date]!.add(event);
+        } else {
+          events[date] = [event];
+        }
+      });
+      print('Error deleting event: $e');
+    }
   }
 
   void _showAddEventDialog() {
@@ -64,7 +146,13 @@ class _CalendarPageState extends State<CalendarPage> {
     return Column(
       children: events[_selectedDay]?.map((event) {
         return ListTile(
-          title: Text(event),
+          title: Text(event['event']),
+          trailing: IconButton(
+            icon: const Icon(Icons.delete, color: Colors.red),
+            onPressed: () {
+              _deleteEvent(event['id'], _selectedDay!, event);
+            },
+          ),
         );
       }).toList() ?? [],
     );
@@ -74,10 +162,7 @@ class _CalendarPageState extends State<CalendarPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 57),
-          child: const Text('Calendar'),
-        ),
+        title: const Text('Calendar'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -117,7 +202,6 @@ class _CalendarPageState extends State<CalendarPage> {
             Expanded(
               child: _buildEventList(),
             ),
-            const Text("No Events Yet...!!!",style: TextStyle(color: Colors.red,fontSize: 30),)
           ],
         ),
       ),
