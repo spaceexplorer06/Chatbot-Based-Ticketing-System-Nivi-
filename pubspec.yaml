@@ -90,7 +90,11 @@ flutter:
     - family: belanosima
       fonts:
         - asset: assets/Images/Belanosima/Belanosima/Belanosima-Regular.ttf
-      
+        - asset: assets/Images/Londrina_Outline/LondrinaOutline-Regular.ttf
+    - family: londrina
+      fonts:
+        - asset: assets/Images/Londrina_Outline/LondrinaOutline-Regular.ttf
+
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
