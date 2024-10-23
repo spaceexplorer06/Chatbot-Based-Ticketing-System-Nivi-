@@ -71,7 +71,7 @@ class _ParisState extends State<Paris> {
               padding: EdgeInsets.symmetric(vertical: 10),
               child: Text(
                 "Visits this month : 4.5K",
-                style: TextStyle(fontSize: 25, color: Colors.blue),
+                style: TextStyle(fontSize: 25, color: Colors.blue, fontFamily: 'belanosima'),
               ),
             ),
             const Row(
