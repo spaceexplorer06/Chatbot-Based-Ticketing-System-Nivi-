@@ -23,7 +23,6 @@ class ViewScreen extends StatefulWidget {
   @override
   State<ViewScreen> createState() => _ViewScreenState();
 }
-
 Widget _buildCustomButton({
   required IconData icon,
   required String text,
