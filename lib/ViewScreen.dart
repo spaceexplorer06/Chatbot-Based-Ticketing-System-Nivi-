@@ -24,6 +24,62 @@ class ViewScreen extends StatefulWidget {
   State<ViewScreen> createState() => _ViewScreenState();
 }
 
+Widget _buildCustomButton({
+  required IconData icon,
+  required String text,
+  required Function() onPressed,
+}) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 8),
+    child: SizedBox(
+      width: 300,
+      height: 55,
+      child: ElevatedButton(
+        onPressed: onPressed,
+        style: ButtonStyle(
+          padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
+          shape: MaterialStateProperty.all(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30),
+            ),
+          ),
+          elevation: MaterialStateProperty.all(8),
+        ),
+        child: Ink(
+          decoration: BoxDecoration(
+            gradient: const LinearGradient(
+              colors: [Color(0xFF45aaf2), Color(0xFF2bcbba)],
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+            ),
+            borderRadius: BorderRadius.circular(30),
+          ),
+          child: Container(
+            alignment: Alignment.center,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(icon, color: Colors.white),
+                const SizedBox(width: 10),
+                Text(
+                  text,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white,
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Icon(Icons.arrow_forward_rounded, color: Colors.white),
+              ],
+            ),
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
 class _ViewScreenState extends State<ViewScreen> {
   final currentUser = FirebaseAuth.instance.currentUser!;
   @override
@@ -378,162 +434,51 @@ class _ViewScreenState extends State<ViewScreen> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
-              child: SizedBox(
-                width: 300, // Desired width
-                height: 50, // Desired height
-                child: ElevatedButton(
-                    style: ButtonStyle(
-                      backgroundColor: ButtonStyleButton.allOrNull(
-                        const Color.fromARGB(255, 77, 218, 206),
-                      ),
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (route) => const TicketingSystem()));
-                    },
-                    child: const Row(
-                      children: [
-                        Icon(
-                          Icons.airplane_ticket_sharp,
-                          color: Colors.black,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 10),
-                          child: Text(
-                            "Ticketing System",
-                            style: TextStyle(color: Colors.black),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 14),
-                          child: Icon(
-                            Icons.arrow_right_alt_rounded,
-                            size: 40,
-                            color: Colors.black,
-                          ),
-                        )
-                      ],
-                    )),
+              child: _buildCustomButton(
+                icon: Icons.airplane_ticket_sharp,
+                text: "Ticketing System",
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                        builder: (route) => const TicketingSystem()),
+                  );
+                },
               ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 5),
-              child: SizedBox(
-                width: 300, // Desired width
-                height: 50, // Desired height
-                child: ElevatedButton(
-                    style: ButtonStyle(
-                      backgroundColor: ButtonStyleButton.allOrNull(
-                        const Color.fromARGB(255, 77, 218, 206),
-                      ),
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (route) => const TripPlanning()));
-                    },
-                    child: const Row(
-                      children: [
-                        Icon(
-                          Icons.beach_access,
-                          color: Colors.black,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 10),
-                          child: Text(
-                            "Trip Planning",
-                            style: TextStyle(color: Colors.black),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 40),
-                          child: Icon(
-                            Icons.arrow_right_alt_rounded,
-                            size: 40,
-                            color: Colors.black,
-                          ),
-                        )
-                      ],
-                    )),
+              child: _buildCustomButton(
+                icon: Icons.beach_access,
+                text: "Trip Planning",
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (route) => const TripPlanning()),
+                  );
+                },
               ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 9),
-              child: SizedBox(
-                width: 300, // Desired width
-                height: 50, // Desired height
-                child: ElevatedButton(
-                    style: ButtonStyle(
-                      backgroundColor: ButtonStyleButton.allOrNull(
-                        const Color.fromARGB(255, 77, 218, 206),
-                      ),
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (route) => const YourPlans()));
-                    },
-                    child: const Row(
-                      children: [
-                        Icon(
-                          Icons.book,
-                          color: Colors.black,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 10),
-                          child: Text(
-                            " Your Plans",
-                            style: TextStyle(color: Colors.black),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 48),
-                          child: Icon(
-                            Icons.arrow_right_alt_rounded,
-                            size: 40,
-                            color: Colors.black,
-                          ),
-                        )
-                      ],
-                    )),
+              child: _buildCustomButton(
+                icon: Icons.book,
+                text: "Your Plans",
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (route) => const YourPlans()),
+                  );
+                },
               ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8),
-              child: SizedBox(
-                width: 300, // Desired width
-                height: 50, // Desired height
-                child: ElevatedButton(
-                    style: ButtonStyle(
-                      backgroundColor: ButtonStyleButton.allOrNull(
-                        const Color.fromARGB(255, 77, 218, 206),
-                      ),
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (route) => CalendarPage()));
-                    },
-                    child: const Row(
-                      children: [
-                        Icon(
-                          Icons.calendar_month,
-                          color: Colors.black,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 10),
-                          child: Text(
-                            "Event Calender",
-                            style: TextStyle(color: Colors.black),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 25),
-                          child: Icon(
-                            Icons.arrow_right_alt_rounded,
-                            size: 40,
-                            color: Colors.black,
-                          ),
-                        )
-                      ],
-                    )),
+              child: _buildCustomButton(
+                icon: Icons.calendar_month,
+                text: "Event Calendar",
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (route) => CalendarPage()),
+                  );
+                },
               ),
             ),
           ],

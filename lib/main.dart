@@ -12,7 +12,6 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
-import 'package:rive/rive.dart';
 import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:app/Home.dart';
@@ -114,8 +113,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                   child: SizedBox(
                                     height: 104,
                                     width: 250,
-                                    child: RiveAnimation.asset(
-                                        'assets/Images/RiveAssets/Hello.riv'),
                                   ),
                                 ),
                                 Padding(
