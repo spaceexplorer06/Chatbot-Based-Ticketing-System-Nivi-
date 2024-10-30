@@ -40,7 +40,7 @@ void main() {
         '/account/': (context) => const Account(),
         '/setting/': (context) => const SettingsApp(),
         '/profile/': (context) => const Profile(),
-        '/edit/': (context) => const Editprofile(),
+        '/edit/': (context) => const Profile(),
         '/ticket/': (context) => const TicketingSystem(),
         '/trip/': (context) => const TripPlanning(),
         '/plans/': (context) => const YourPlans(),
