@@ -69,7 +69,7 @@ Widget _buildCustomButton({
                   ),
                 ),
                 const SizedBox(width: 10),
-                Icon(Icons.arrow_forward_rounded, color: Colors.white),
+                const Icon(Icons.arrow_forward_rounded, color: Colors.white),
               ],
             ),
           ),
@@ -129,7 +129,7 @@ class _ViewScreenState extends State<ViewScreen> {
                 ),
               ),
               ListTile(
-                leading: Icon(Icons.favorite),
+                leading: const Icon(Icons.favorite),
                 title: const Text(
                   "Favourites",
                   style: TextStyle(fontSize: 20),
@@ -158,7 +158,7 @@ class _ViewScreenState extends State<ViewScreen> {
                 ),
                 onTap: () {
                   Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) => NiviBot()));
+                      .push(MaterialPageRoute(builder: (context) => const NiviBot()));
                 },
               ),
               ListTile(
@@ -475,7 +475,7 @@ class _ViewScreenState extends State<ViewScreen> {
                 text: "Event Calendar",
                 onPressed: () {
                   Navigator.of(context).push(
-                    MaterialPageRoute(builder: (route) => CalendarPage()),
+                    MaterialPageRoute(builder: (route) => const CalendarPage()),
                   );
                 },
               ),

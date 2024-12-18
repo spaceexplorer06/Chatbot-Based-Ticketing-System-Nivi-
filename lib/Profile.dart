@@ -1,6 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:app/Profile/EditProfile.dart';
 import 'package:app/Profile/ProfileData.dart';
-import 'package:flutter/material.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -27,7 +29,30 @@ class _ProfileState extends State<Profile> {
       setState(() {
         profileData = updatedProfile;
       });
+
+      // After updating profile, save it to Firestore
+      saveProfileToFirestore(updatedProfile);
     }
+  }
+
+  // Method to save profile data to Firestore
+  Future<void> saveProfileToFirestore(ProfileData profile) async {
+    // Get the current user ID
+    String userId = FirebaseAuth.instance.currentUser!.uid;
+
+    // Reference to the Firestore document
+    DocumentReference userRef = FirebaseFirestore.instance.collection('users').doc(userId);
+
+    // Save or update profile data in Firestore
+    await userRef.set({
+      'name': profile.name,
+      'email': profile.email,
+      'phoneNumber': profile.phoneNumber,
+    }).then((value) {
+      print('Profile updated successfully');
+    }).catchError((error) {
+      print('Failed to update profile: $error');
+    });
   }
 
   // Method to build a profile detail with uniform icon size
