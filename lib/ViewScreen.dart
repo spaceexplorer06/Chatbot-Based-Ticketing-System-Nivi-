@@ -16,13 +16,13 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart' hide CarouselController;
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-
 class ViewScreen extends StatefulWidget {
   const ViewScreen({super.key});
 
   @override
   State<ViewScreen> createState() => _ViewScreenState();
 }
+
 Widget _buildCustomButton({
   required IconData icon,
   required String text,
@@ -36,13 +36,13 @@ Widget _buildCustomButton({
       child: ElevatedButton(
         onPressed: onPressed,
         style: ButtonStyle(
-          padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
-          shape: MaterialStateProperty.all(
+          padding: WidgetStateProperty.all(const EdgeInsets.all(0)),
+          shape: WidgetStateProperty.all(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(30),
             ),
           ),
-          elevation: MaterialStateProperty.all(8),
+          elevation: WidgetStateProperty.all(8),
         ),
         child: Ink(
           decoration: BoxDecoration(
@@ -157,8 +157,8 @@ class _ViewScreenState extends State<ViewScreen> {
                   style: TextStyle(fontSize: 20),
                 ),
                 onTap: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) => const NiviBot()));
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => const NiviBot()));
                 },
               ),
               ListTile(

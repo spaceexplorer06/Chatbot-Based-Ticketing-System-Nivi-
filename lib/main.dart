@@ -1,7 +1,6 @@
 import 'package:app/API.dart';
 import 'package:app/Account.dart';
 import 'package:app/Profile.dart';
-import 'package:app/Profile/EditProfile.dart';
 import 'package:app/ViewScreen.dart';
 import 'package:app/Viewscreen/CalenderPage.dart';
 import 'package:app/Viewscreen/TicketingSystem.dart';
@@ -12,7 +11,6 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:provider/provider.dart';
-import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:app/Home.dart';
