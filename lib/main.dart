@@ -11,6 +11,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
+import 'package:provider/provider.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -20,19 +21,36 @@ import 'package:app/Settings_app.dart';
 
 void main() {
   Gemini.init(
-    apiKey: GEMINI_API_KEY,
+    apiKey: GEMINI_API_KEY, // Replace with your actual API key
   );
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
-    MaterialApp(
+    ChangeNotifierProvider(
+      create: (_) => ThemeNotifier(),
+      child: const MyApp(),
+    ),
+  );
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final themeNotifier = Provider.of<ThemeNotifier>(context);
+
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
+      themeMode: themeNotifier.themeMode,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-            seedColor: const Color.fromARGB(255, 255, 210, 210)),
+          seedColor: const Color.fromARGB(255, 255, 210, 210),
+        ),
         useMaterial3: true,
       ),
-      home:  const Home(),
+      darkTheme: ThemeData.dark(),
+      home: const Home(),
       routes: {
         '/home/': (context) => const Home(),
         '/view/': (context) => const ViewScreen(),
@@ -46,8 +64,8 @@ void main() {
         '/plans/': (context) => const YourPlans(),
         '/calender/': (context) => const CalendarPage(),
       },
-    ),
-  );
+    );
+  }
 }
 
 class LoginScreen extends StatefulWidget {
