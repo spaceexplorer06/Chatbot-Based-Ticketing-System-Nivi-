@@ -1,3 +1,4 @@
 {
-    "cmake.sourceDirectory": "C:/Users/DELL/app/linux"
+    "cmake.sourceDirectory": "C:/Users/DELL/app/linux",
+    "java.configuration.updateBuildConfiguration": "interactive"
 }
